@@ -25,3 +25,11 @@
 ```powershell
 pwsh -File .\split_middle_overlap.ps1 "path\to\video.mp4"
 ```
+
+
+
+
+
+
+
+https://chatgpt.com/c/68f4d9aa-a4b4-832c-a50b-a238e88c807d
