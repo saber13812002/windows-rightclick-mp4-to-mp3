@@ -8,3 +8,4 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\\mp4file\\shell\\Split at midpoint (1s overlap)\\command]
 @="powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"D:\\saberprojects\\rad\\convert_mp4_to_mp3\\split_middle_overlap.ps1\" \"%1\""
 
+
