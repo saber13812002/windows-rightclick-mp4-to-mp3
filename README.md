@@ -35,9 +35,12 @@ convert_mp4_to_mp3/
 ├── remove-silence-mp3/
 │   ├── remove_silence.py
 │   └── remove_silence.reg
-└── remove-long-silence-mp3/
-    ├── remove_long_silence.py
-    └── remove_long_silence.reg
+├── remove-long-silence-mp3/
+│   ├── remove_long_silence.py
+│   └── remove_long_silence.reg
+└── split-on-silence-mp3/
+    ├── split_on_silence.py
+    └── split_on_silence.reg
 ```
 
 **نکته**: فیچر `split-mp3-middle` از همان فایل پایتون `split_middle_overlap.py` در پوشه `split-mp4-middle` استفاده می‌کند.
@@ -192,6 +195,39 @@ convert_mp4_to_mp3/
 
 ---
 
+### 8. تقسیم موسیقی بر اساس سکوت
+
+**پوشه**: `split-on-silence-mp3/`  
+**فایل پایتون**: `split-on-silence-mp3/split_on_silence.py`  
+**فایل رجیستری**: `split-on-silence-mp3/split_on_silence.reg`
+
+تقسیم فایل صوتی MP3 به قطعات جداگانه بر اساس سکوت‌های 2 ثانیه‌ای یا بیشتر. هر قطعه به عنوان یک فایل جداگانه در یک پوشه ذخیره می‌شود.
+
+**تفاوت با فیچرهای قبلی**:
+- فیچرهای `remove-silence-mp3` و `remove-long-silence-mp3`: سکوت‌ها را حذف می‌کنند و یک فایل واحد می‌سازند
+- این فیچر: موسیقی را به قطعات جداگانه تقسیم می‌کند و هر قطعه را در فایل جداگانه ذخیره می‌کند
+
+**نحوه کار**:
+- از FFmpeg برای تشخیص بخش‌های سکوت 2 ثانیه‌ای یا بیشتر استفاده می‌کند
+- بخش‌های غیر سکوت را به عنوان قطعات جداگانه استخراج می‌کند
+- هر قطعه در پوشه `<name>_parts` با نام `part_001.mp3`, `part_002.mp3` و... ذخیره می‌شود
+
+**نحوه استفاده**:
+1. فایل `split-on-silence-mp3/split_on_silence.reg` را اجرا کنید و Allow بزنید
+2. روی هر فایل `.mp3` راست‌کلیک کنید
+3. گزینه "Split on Silence (2s+)" را انتخاب کنید
+4. پردازش شروع می‌شود و یک پوشه با نام `<name>_parts` ساخته می‌شود
+5. تمام قطعات در این پوشه ذخیره می‌شوند
+
+**نکات**:
+- پردازش فایل‌های طولانی ممکن است چند دقیقه زمان ببرد
+- فایل اصلی بدون تغییر باقی می‌ماند
+- تمام قطعات در یک پوشه جداگانه ذخیره می‌شوند
+- می‌توانید مدت سکوت را با اجرای دستی اسکریپت تغییر دهید (پیش‌فرض: 2 ثانیه)
+- مناسب برای تقسیم فایل‌های طولانی به قطعات کوچکتر بر اساس سکوت
+
+---
+
 ## نحوه نصب
 
 1. تمام فایل‌های پروژه را دانلود کنید
@@ -217,6 +253,9 @@ python remove-silence-mp3/remove_silence.py "path\to\file.mp3" 3.0
 python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3"
 # یا با مدت سکوت سفارشی:
 python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3" 10.0
+python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3"
+# یا با مدت سکوت سفارشی:
+python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3" 3.0
 ```
 
 ## یادداشت توسعه
