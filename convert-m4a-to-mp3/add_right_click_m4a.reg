@@ -4,4 +4,4 @@ Windows Registry Editor Version 5.00
 @="Convert to MP3"
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\Convert to MP3\command]
-@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" \"D:\\saberprojects\\rad\\convert_mp4_to_mp3\\convert_mp4_to_mp3.py\" \"%1\""
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\" \"D:\\saberprojects\\rad\\convert_mp4_to_mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\""

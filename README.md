@@ -11,11 +11,30 @@
 - **هر فیچر = یک هدف**: هر قابلیت به عنوان یک هدف مستقل در نظر گرفته می‌شود
 - **هر فیچر = یک فایل پایتون**: برای هر فیچر یک فایل پایتون جداگانه نوشته می‌شود که منطق اصلی را پیاده‌سازی می‌کند
 - **هر فیچر = یک فایل رجیستری**: برای هر فیچر یک فایل `.reg` ساخته می‌شود که با اجرای آن در ویندوز، گزینه مربوطه به منوی کلیک راست اضافه می‌شود
+- **هر فیچر = یک پوشه جداگانه**: هر فیچر در پوشه مخصوص به خودش با نام انگلیسی قرار دارد تا پروژه منظم و سازماندهی شده باشد
 - **ثبت در README**: هر فیچر جدید در فایل README اصلی پروژه ثبت و مستندسازی می‌شود
 
-### یادداشت سازماندهی
+### ساختار پوشه‌ها
 
-در حال حاضر تمام فایل‌های پروژه در ریشه پوشه قرار دارند. در آینده بهتر است هر فیچر در پوشه مخصوص به خودش قرار بگیرد تا پروژه منظم‌تر شود.
+```
+convert_mp4_to_mp3/
+├── convert-mp4-to-mp3/
+│   ├── convert_mp4_to_mp3.py
+│   └── convert to mp3.reg
+├── convert-m4a-to-mp3/
+│   ├── convert_m4a_to_mp3.py
+│   └── add_right_click_m4a.reg
+├── split-mp4-middle/
+│   ├── split_middle_overlap.py
+│   └── add_right_click_split_middle_python.reg
+├── split-mp3-middle/
+│   └── add_right_click_split_middle_python_mp3.reg
+└── add-music-to-mp3/
+    ├── add_music.bat
+    └── add music.reg
+```
+
+**نکته**: فیچر `split-mp3-middle` از همان فایل پایتون `split_middle_overlap.py` در پوشه `split-mp4-middle` استفاده می‌کند.
 
 ## پیش‌نیازها
 
@@ -27,13 +46,14 @@
 
 ### 1. تبدیل MP4 به MP3
 
-**فایل پایتون**: `convert_mp4_to_mp3.py`  
-**فایل رجیستری**: `convert to mp3.reg`
+**پوشه**: `convert-mp4-to-mp3/`  
+**فایل پایتون**: `convert-mp4-to-mp3/convert_mp4_to_mp3.py`  
+**فایل رجیستری**: `convert-mp4-to-mp3/convert to mp3.reg`
 
 تبدیل فایل‌های ویدیویی MP4 به فایل‌های صوتی MP3.
 
 **نحوه استفاده**:
-1. فایل `convert to mp3.reg` را اجرا کنید و Allow بزنید
+1. فایل `convert-mp4-to-mp3/convert to mp3.reg` را اجرا کنید و Allow بزنید
 2. روی هر فایل `.mp4` راست‌کلیک کنید
 3. گزینه "Convert to MP3" را انتخاب کنید
 4. فایل MP3 در همان مسیر فایل اصلی ساخته می‌شود
@@ -42,13 +62,14 @@
 
 ### 2. تبدیل M4A به MP3
 
-**فایل پایتون**: `convert_m4a_to_mp3.py`  
-**فایل رجیستری**: `add_right_click_m4a.reg`
+**پوشه**: `convert-m4a-to-mp3/`  
+**فایل پایتون**: `convert-m4a-to-mp3/convert_m4a_to_mp3.py`  
+**فایل رجیستری**: `convert-m4a-to-mp3/add_right_click_m4a.reg`
 
 تبدیل فایل‌های صوتی M4A به فرمت MP3.
 
 **نحوه استفاده**:
-1. فایل `add_right_click_m4a.reg` را اجرا کنید و Allow بزنید
+1. فایل `convert-m4a-to-mp3/add_right_click_m4a.reg` را اجرا کنید و Allow بزنید
 2. روی هر فایل `.m4a` راست‌کلیک کنید
 3. گزینه "Convert to MP3" را انتخاب کنید
 4. فایل MP3 در همان مسیر فایل اصلی ساخته می‌شود
@@ -57,13 +78,14 @@
 
 ### 3. تقسیم ویدیو از وسط با هم‌پوشانی (MP4)
 
-**فایل پایتون**: `split_middle_overlap.py`  
-**فایل رجیستری**: `add_right_click_split_middle_python.reg`
+**پوشه**: `split-mp4-middle/`  
+**فایل پایتون**: `split-mp4-middle/split_middle_overlap.py`  
+**فایل رجیستری**: `split-mp4-middle/add_right_click_split_middle_python.reg`
 
 تقسیم فایل‌های ویدیویی MP4 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای. فایل به دو قسمت تقسیم می‌شود که قسمت دوم از 1 ثانیه قبل از نقطه میانی شروع می‌شود.
 
 **نحوه استفاده**:
-1. فایل `add_right_click_split_middle_python.reg` را اجرا کنید و Allow بزنید
+1. فایل `split-mp4-middle/add_right_click_split_middle_python.reg` را اجرا کنید و Allow بزنید
 2. روی هر فایل `.mp4` راست‌کلیک کنید
 3. گزینه "Split midpoint (1s overlap)" را انتخاب کنید
 4. دو فایل خروجی ساخته می‌شوند: `<name>_part1.mp4` و `<name>_part2.mp4`
@@ -72,13 +94,14 @@
 
 ### 4. تقسیم فایل صوتی از وسط با هم‌پوشانی (MP3)
 
-**فایل پایتون**: `split_middle_overlap.py`  
-**فایل رجیستری**: `add_right_click_split_middle_python_mp3.reg`
+**پوشه**: `split-mp3-middle/`  
+**فایل پایتون**: `split-mp4-middle/split_middle_overlap.py` (اشتراک‌گذاری شده با فیچر قبلی)  
+**فایل رجیستری**: `split-mp3-middle/add_right_click_split_middle_python_mp3.reg`
 
 تقسیم فایل‌های صوتی MP3 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای. همان منطق فیچر قبلی اما برای فایل‌های MP3.
 
 **نحوه استفاده**:
-1. فایل `add_right_click_split_middle_python_mp3.reg` را اجرا کنید و Allow بزنید
+1. فایل `split-mp3-middle/add_right_click_split_middle_python_mp3.reg` را اجرا کنید و Allow بزنید
 2. روی هر فایل `.mp3` راست‌کلیک کنید
 3. گزینه "Split midpoint (1s overlap)" را انتخاب کنید
 4. دو فایل خروجی ساخته می‌شوند: `<name>_part1.mp3` و `<name>_part2.mp3`
@@ -87,14 +110,15 @@
 
 ### 5. اضافه کردن موزیک به فایل‌های MP3
 
-**فایل Batch**: `add_music.bat`  
-**فایل رجیستری**: `add music.reg`
+**پوشه**: `add-music-to-mp3/`  
+**فایل Batch**: `add-music-to-mp3/add_music.bat`  
+**فایل رجیستری**: `add-music-to-mp3/add music.reg`
 
 اضافه کردن فایل‌های موزیک ثابت (start.mp3، middle.mp3، finish.mp3) به ابتدا، وسط و انتهای فایل‌های MP3 موجود در پوشه. فایل اصلی از وسط تقسیم می‌شود و موزیک‌ها در بین قسمت‌ها قرار می‌گیرند.
 
 **نحوه استفاده**:
 1. فایل‌های `start.mp3`، `middle.mp3` و `finish.mp3` را در پوشه پروژه قرار دهید
-2. فایل `add music.reg` را اجرا کنید و Allow بزنید
+2. فایل `add-music-to-mp3/add music.reg` را اجرا کنید و Allow بزنید
 3. روی هر فایل `.mp3` راست‌کلیک کنید
 4. گزینه "Add Custom Music" را انتخاب کنید
 5. فایل خروجی با نام `output_<name>.mp3` ساخته می‌شود
@@ -119,14 +143,16 @@
 همه اسکریپت‌های پایتون را می‌توان به صورت دستی نیز اجرا کرد:
 
 ```bash
-python convert_mp4_to_mp3.py "path\to\file.mp4"
-python convert_m4a_to_mp3.py "path\to\file.m4a"
-python split_middle_overlap.py "path\to\file.mp4"
+python convert-mp4-to-mp3/convert_mp4_to_mp3.py "path\to\file.mp4"
+python convert-m4a-to-mp3/convert_m4a_to_mp3.py "path\to\file.m4a"
+python split-mp4-middle/split_middle_overlap.py "path\to\file.mp4"
 ```
 
 ## یادداشت توسعه
 
 - هر فیچر جدید باید شامل یک فایل پایتون و یک فایل رجیستری باشد
+- هر فیچر باید در پوشه جداگانه با نام انگلیسی قرار بگیرد
+- نام پوشه‌ها باید واضح و توصیفی باشند (استفاده از خط تیره برای جدا کردن کلمات)
 - نام فایل‌ها باید واضح و توصیفی باشند
 - هر فیچر جدید باید در این README مستندسازی شود
-- در آینده بهتر است هر فیچر در پوشه مخصوص به خودش قرار بگیرد
+- هنگام ساخت فایل رجیستری جدید، مسیر فایل پایتون باید به مسیر کامل در پوشه مربوطه اشاره کند
