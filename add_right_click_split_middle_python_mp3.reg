@@ -1,0 +1,12 @@
+Windows Registry Editor Version 5.00
+
+; Adds a context menu item for .mp3 files to split at the midpoint with 1s overlap using Python
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp3\shell\Split midpoint (1s overlap)]
+@="Split midpoint (1s overlap)"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp3\shell\Split midpoint (1s overlap)\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects\\rad\\convert_mp4_to_mp3\\split_middle_overlap.py\" \"%1\""
+
+
+
