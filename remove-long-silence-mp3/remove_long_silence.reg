@@ -1,0 +1,10 @@
+Windows Registry Editor Version 5.00
+
+; Adds a context menu item for .mp3 files to remove long silence segments (5 seconds or more)
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp3\shell\Remove Long Silence]
+@="Remove Long Silence (5s+)"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.mp3\shell\Remove Long Silence\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects\\rad\\convert_mp4_to_mp3\\remove-long-silence-mp3\\remove_long_silence.py\" \"%1\""
+
