@@ -29,9 +29,12 @@ convert_mp4_to_mp3/
 │   └── add_right_click_split_middle_python.reg
 ├── split-mp3-middle/
 │   └── add_right_click_split_middle_python_mp3.reg
-└── add-music-to-mp3/
-    ├── add_music.bat
-    └── add music.reg
+├── add-music-to-mp3/
+│   ├── add_music.bat
+│   └── add music.reg
+└── remove-silence-mp3/
+    ├── remove_silence.py
+    └── remove_silence.reg
 ```
 
 **نکته**: فیچر `split-mp3-middle` از همان فایل پایتون `split_middle_overlap.py` در پوشه `split-mp4-middle` استفاده می‌کند.
@@ -127,6 +130,32 @@ convert_mp4_to_mp3/
 
 ---
 
+### 6. حذف سکوت از فایل‌های MP3
+
+**پوشه**: `remove-silence-mp3/`  
+**فایل پایتون**: `remove-silence-mp3/remove_silence.py`  
+**فایل رجیستری**: `remove-silence-mp3/remove_silence.reg`
+
+حذف خودکار بخش‌های سکوت 2 ثانیه‌ای یا بیشتر از فایل‌های صوتی MP3. این فیچر برای فایل‌های طولانی (مثلاً 1-2 ساعته) که دارای سکوت‌های متعدد هستند بسیار مفید است.
+
+**نحوه کار**:
+- از FFmpeg برای تشخیص بخش‌های سکوت استفاده می‌کند
+- بخش‌های غیر سکوت را استخراج و به هم می‌چسباند
+- فایل خروجی با پسوند `_no_silence` ساخته می‌شود
+
+**نحوه استفاده**:
+1. فایل `remove-silence-mp3/remove_silence.reg` را اجرا کنید و Allow بزنید
+2. روی هر فایل `.mp3` راست‌کلیک کنید
+3. گزینه "Remove Silence (2s+)" را انتخاب کنید
+4. پردازش شروع می‌شود و فایل خروجی با نام `<name>_no_silence.mp3` ساخته می‌شود
+
+**نکات**:
+- پردازش فایل‌های طولانی ممکن است چند دقیقه زمان ببرد
+- فایل اصلی بدون تغییر باقی می‌ماند
+- می‌توانید مدت سکوت را با اجرای دستی اسکریپت تغییر دهید (پیش‌فرض: 2 ثانیه)
+
+---
+
 ## نحوه نصب
 
 1. تمام فایل‌های پروژه را دانلود کنید
@@ -146,6 +175,9 @@ convert_mp4_to_mp3/
 python convert-mp4-to-mp3/convert_mp4_to_mp3.py "path\to\file.mp4"
 python convert-m4a-to-mp3/convert_m4a_to_mp3.py "path\to\file.m4a"
 python split-mp4-middle/split_middle_overlap.py "path\to\file.mp4"
+python remove-silence-mp3/remove_silence.py "path\to\file.mp3"
+# یا با مدت سکوت سفارشی:
+python remove-silence-mp3/remove_silence.py "path\to\file.mp3" 3.0
 ```
 
 ## یادداشت توسعه
