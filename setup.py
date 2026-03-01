@@ -1,4 +1,4 @@
-"""
+r"""
 یک‌بار اجرا کن: مسیر پایتون و ffmpeg را تشخیص می‌دهد، config.json و register_all.reg می‌سازد.
 بعد فایل register_all.reg را اجرا کن تا همه گزینه‌ها روی راست‌کلیک اضافه شوند.
 استفاده با مسیر دستی پایتون: python setup.py --python "C:\path\to\python.exe"
@@ -6,15 +6,102 @@
 import argparse
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
+
+VERSION = "1.0"
+
+# Scripts and dirs we expect under project root
+REQUIRED = [
+    "convert-mp4-to-mp3/convert_mp4_to_mp3.py",
+    "convert-m4a-to-mp3/convert_m4a_to_mp3.py",
+    "split-mp4-middle/split_middle_overlap.py",
+    "add-music-to-mp3/add_music.bat",
+    "remove-silence-mp3/remove_silence.py",
+    "remove-long-silence-mp3/remove_long_silence.py",
+    "split-on-silence-mp3/split_on_silence.py",
+    "_ffmpeg_config.py",
+]
+
+
+def run_check(root: Path, python_exe: Path) -> None:
+    """Print verification report so user can paste output and confirm setup."""
+    lines = [
+        "--- convert_mp4_to_mp3 setup check ---",
+        f"Version: {VERSION}",
+        f"Project root: {root}",
+        f"Python: {python_exe}",
+        "",
+    ]
+    try:
+        r = subprocess.run(
+            [str(python_exe), "--version"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        ver = (r.stdout or r.stderr or "").strip()
+        lines.append(f"Python version: {ver}")
+    except Exception as e:
+        lines.append(f"Python version: ERROR - {e}")
+    lines.append("")
+
+    config_path = root / "config.json"
+    if config_path.exists():
+        try:
+            with open(config_path, encoding="utf-8") as f:
+                cfg = json.load(f)
+            lines.append("config.json: found")
+            lines.append(f"  ffmpeg:  {cfg.get('ffmpeg') or '(use PATH)'}")
+            lines.append(f"  ffprobe: {cfg.get('ffprobe') or '(use PATH)'}")
+        except Exception as e:
+            lines.append(f"config.json: ERROR - {e}")
+    else:
+        lines.append("config.json: not found (run setup once to create)")
+    lines.append("")
+
+    lines.append("Required files:")
+    ok = 0
+    for rel in REQUIRED:
+        p = root / rel.replace("/", "\\")
+        exists = p.exists()
+        if exists:
+            ok += 1
+        lines.append(f"  {'OK' if exists else 'MISSING'}: {rel}")
+    lines.append("")
+    lines.append(f"Files: {ok}/{len(REQUIRED)} present")
+
+    ffmpeg_path = shutil.which("ffmpeg")
+    if not ffmpeg_path and config_path.exists():
+        try:
+            with open(config_path, encoding="utf-8") as f:
+                ffmpeg_path = json.load(f).get("ffmpeg") or ""
+        except Exception:
+            pass
+    lines.append(f"ffmpeg in PATH or config: {'yes' if ffmpeg_path else 'NO (install ffmpeg)'}")
+    lines.append("--- end check ---")
+    print("\n".join(lines))
+
 
 def main():
     ap = argparse.ArgumentParser(description="Generate config.json and register_all.reg for context menu.")
     ap.add_argument("--python", metavar="PATH", help="Path to python.exe (if not in PATH)")
+    ap.add_argument("--version", "-V", action="store_true", help="Print version and exit")
+    ap.add_argument("--check", "-c", action="store_true", help="Verify setup and print report (no files written)")
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parent
+
+    if args.version:
+        print(f"convert_mp4_to_mp3 setup {VERSION}")
+        return
+
+    if args.check:
+        python_exe = (Path(args.python).resolve() if args.python else Path(sys.executable)).resolve()
+        run_check(root, python_exe)
+        return
+
     python_exe = (Path(args.python).resolve() if args.python else Path(sys.executable)).resolve()
     ffmpeg = shutil.which("ffmpeg") or ""
     ffprobe = shutil.which("ffprobe") or ""
