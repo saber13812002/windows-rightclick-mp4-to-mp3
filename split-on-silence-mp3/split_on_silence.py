@@ -7,7 +7,7 @@ from pathlib import Path
 _root = Path(__file__).resolve().parent.parent
 if str(_root) not in sys.path:
     sys.path.insert(0, str(_root))
-from _ffmpeg_config import get_ffmpeg, get_ffprobe
+from _ffmpeg_config import get_ffmpeg, get_ffprobe, setup_context_menu_log
 
 
 def run(cmd, capture_output=False):
@@ -162,6 +162,7 @@ def split_on_silence(input_path, silence_duration=2.0):
 
 
 def main():
+    setup_context_menu_log()
     if len(sys.argv) < 2:
         print("استفاده: python split_on_silence.py <فایل_mp3> [مدت_سکوت]")
         print("مثال: python split_on_silence.py audio.mp3 2.0")

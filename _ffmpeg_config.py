@@ -1,9 +1,55 @@
 """
 ماژول مشترک: مسیر ffmpeg/ffprobe از config.json (توسط setup.py پر می‌شود).
 اگر config نبود یا خالی بود، از PATH استفاده می‌شود.
+همچنین setup_context_menu_log() برای نوشتن خروجی/خطا در context_menu.log.
 """
 import json
+import sys
+from datetime import datetime
 from pathlib import Path
+
+_LOG_FILE = None
+
+
+class _Tee:
+    def __init__(self, stream, log_file):
+        self._stream = stream
+        self._log = log_file
+
+    def write(self, data):
+        self._stream.write(data)
+        if self._log:
+            try:
+                self._log.write(data)
+                self._log.flush()
+            except OSError:
+                pass
+
+    def flush(self):
+        self._stream.flush()
+        if self._log:
+            try:
+                self._log.flush()
+            except OSError:
+                pass
+
+
+def setup_context_menu_log():
+    """همهٔ print و خطاها را علاوه بر کنسول در context_menu.log (در روت پروژه) هم بنویس."""
+    global _LOG_FILE
+    if _LOG_FILE is not None:
+        return
+    try:
+        root = _project_root()
+        log_path = root / "context_menu.log"
+        _LOG_FILE = open(log_path, "a", encoding="utf-8")
+        header = f"\n=== {datetime.now().isoformat()} | {sys.executable} | argv: {sys.argv}\n"
+        _LOG_FILE.write(header)
+        _LOG_FILE.flush()
+        sys.stdout = _Tee(sys.stdout, _LOG_FILE)
+        sys.stderr = _Tee(sys.stderr, _LOG_FILE)
+    except Exception:
+        pass
 
 _CONFIG = None
 

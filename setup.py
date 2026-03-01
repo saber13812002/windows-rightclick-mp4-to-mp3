@@ -80,6 +80,7 @@ def run_check(root: Path, python_exe: Path) -> None:
         except Exception:
             pass
     lines.append(f"ffmpeg in PATH or config: {'yes' if ffmpeg_path else 'NO (install ffmpeg)'}")
+    lines.append(f"Log file (after right-click runs): {root / 'context_menu.log'}")
     lines.append("--- end check ---")
     print("\n".join(lines))
 

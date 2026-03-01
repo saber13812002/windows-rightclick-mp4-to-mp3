@@ -6,7 +6,7 @@ from pathlib import Path
 _root = Path(__file__).resolve().parent.parent
 if str(_root) not in sys.path:
     sys.path.insert(0, str(_root))
-from _ffmpeg_config import get_ffmpeg, get_ffprobe
+from _ffmpeg_config import get_ffmpeg, get_ffprobe, setup_context_menu_log
 
 
 def run(cmd):
@@ -94,6 +94,7 @@ def split_midpoint_with_overlap(input_path):
 
 
 def main():
+    setup_context_menu_log()
     input_file = sys.argv[1]
     split_midpoint_with_overlap(input_file)
 
