@@ -51,7 +51,12 @@ def main():
     with open(reg_path, "w", encoding="utf-8") as f:
         f.write("\r\n".join(lines))
     print("register_all.reg created.")
-    print("Next: double-click register_all.reg (or right-click -> Merge) and allow.")
+
+    # Open .reg so user can confirm merge (one click) — or run: reg import register_all.reg (as Admin)
+    import os
+    if os.name == "nt":
+        os.startfile(str(reg_path))
+        print("A dialog opened: click Yes/OK to add the context menu.")
 
 
 if __name__ == "__main__":
