@@ -24,7 +24,7 @@ set "FFMPEG_ARG="
 "%PY%" -c "import shutil; exit(0 if shutil.which('ffmpeg') else 1)" 2>nul
 if errorlevel 1 (
     echo ffmpeg not in PATH.
-    set /p "FFMPEG=Enter full path to ffmpeg.exe: "
+    set /p "FFMPEG=Enter path to ffmpeg.exe or its folder (e.g. paste from Explorer bar): "
     set "FFMPEG=!FFMPEG:"=!"
     if defined FFMPEG set "FFMPEG_ARG=--ffmpeg "!FFMPEG!""
 )

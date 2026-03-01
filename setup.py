@@ -109,7 +109,7 @@ def main():
     ffprobe = (args.ffprobe and str(Path(args.ffprobe).resolve())) or shutil.which("ffprobe") or ""
 
     if not ffmpeg and getattr(sys.stdin, "isatty", lambda: False) and sys.stdin.isatty():
-        prompt = "ffmpeg not in PATH. Enter full path to ffmpeg.exe (or press Enter to skip): "
+        prompt = "ffmpeg not in PATH. Enter path to ffmpeg.exe or its folder (e.g. from Explorer bar): "
         try:
             user_ffmpeg = input(prompt).strip().strip('"')
         except (EOFError, OSError):
@@ -119,8 +119,21 @@ def main():
             if not ffprobe:
                 ffprobe = str(Path(ffmpeg).parent / "ffprobe.exe")
 
+    def norm_exe(path: str, exe_name: str) -> str:
+        """If path is a folder (e.g. pasted from Explorer address bar), use folder/exe_name."""
+        if not path:
+            return path
+        p = Path(path).resolve()
+        if p.is_dir():
+            return str(p / exe_name)
+        return str(p)
+
+    if ffmpeg:
+        ffmpeg = norm_exe(ffmpeg, "ffmpeg.exe")
     if ffmpeg and not ffprobe:
         ffprobe = str(Path(ffmpeg).parent / "ffprobe.exe")
+    if ffprobe:
+        ffprobe = norm_exe(ffprobe, "ffprobe.exe")
 
     config = {"ffmpeg": ffmpeg or "", "ffprobe": ffprobe or ""}
     with open(root / "config.json", "w", encoding="utf-8") as f:
