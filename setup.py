@@ -1,15 +1,21 @@
 """
 یک‌بار اجرا کن: مسیر پایتون و ffmpeg را تشخیص می‌دهد، config.json و register_all.reg می‌سازد.
 بعد فایل register_all.reg را اجرا کن تا همه گزینه‌ها روی راست‌کلیک اضافه شوند.
+استفاده با مسیر دستی پایتون: python setup.py --python "C:\path\to\python.exe"
 """
+import argparse
 import json
 import shutil
 import sys
 from pathlib import Path
 
 def main():
+    ap = argparse.ArgumentParser(description="Generate config.json and register_all.reg for context menu.")
+    ap.add_argument("--python", metavar="PATH", help="Path to python.exe (if not in PATH)")
+    args = ap.parse_args()
+
     root = Path(__file__).resolve().parent
-    python_exe = sys.executable
+    python_exe = (Path(args.python).resolve() if args.python else Path(sys.executable)).resolve()
     ffmpeg = shutil.which("ffmpeg") or ""
     ffprobe = shutil.which("ffprobe") or ""
 
