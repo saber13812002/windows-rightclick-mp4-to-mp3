@@ -19,6 +19,16 @@ if not defined PY (
 )
 
 echo Using Python: %PY%
-"%PY%" "%SCRIPT_DIR%setup.py" --python "%PY%"
+
+set "FFMPEG_ARG="
+"%PY%" -c "import shutil; exit(0 if shutil.which('ffmpeg') else 1)" 2>nul
+if errorlevel 1 (
+    echo ffmpeg not in PATH.
+    set /p "FFMPEG=Enter full path to ffmpeg.exe: "
+    set "FFMPEG=!FFMPEG:"=!"
+    if defined FFMPEG set "FFMPEG_ARG=--ffmpeg "!FFMPEG!""
+)
+
+"%PY%" "%SCRIPT_DIR%setup.py" --python "%PY%" %FFMPEG_ARG%
 echo.
 pause

@@ -87,6 +87,8 @@ def run_check(root: Path, python_exe: Path) -> None:
 def main():
     ap = argparse.ArgumentParser(description="Generate config.json and register_all.reg for context menu.")
     ap.add_argument("--python", metavar="PATH", help="Path to python.exe (if not in PATH)")
+    ap.add_argument("--ffmpeg", metavar="PATH", help="Path to ffmpeg.exe (if not in PATH)")
+    ap.add_argument("--ffprobe", metavar="PATH", help="Path to ffprobe.exe (optional; default: same dir as ffmpeg)")
     ap.add_argument("--version", "-V", action="store_true", help="Print version and exit")
     ap.add_argument("--check", "-c", action="store_true", help="Verify setup and print report (no files written)")
     args = ap.parse_args()
@@ -103,10 +105,24 @@ def main():
         return
 
     python_exe = (Path(args.python).resolve() if args.python else Path(sys.executable)).resolve()
-    ffmpeg = shutil.which("ffmpeg") or ""
-    ffprobe = shutil.which("ffprobe") or ""
+    ffmpeg = (args.ffmpeg and str(Path(args.ffmpeg).resolve())) or shutil.which("ffmpeg") or ""
+    ffprobe = (args.ffprobe and str(Path(args.ffprobe).resolve())) or shutil.which("ffprobe") or ""
 
-    config = {"ffmpeg": ffmpeg, "ffprobe": ffprobe}
+    if not ffmpeg and getattr(sys.stdin, "isatty", lambda: False) and sys.stdin.isatty():
+        prompt = "ffmpeg not in PATH. Enter full path to ffmpeg.exe (or press Enter to skip): "
+        try:
+            user_ffmpeg = input(prompt).strip().strip('"')
+        except (EOFError, OSError):
+            user_ffmpeg = ""
+        if user_ffmpeg:
+            ffmpeg = str(Path(user_ffmpeg).resolve())
+            if not ffprobe:
+                ffprobe = str(Path(ffmpeg).parent / "ffprobe.exe")
+
+    if ffmpeg and not ffprobe:
+        ffprobe = str(Path(ffmpeg).parent / "ffprobe.exe")
+
+    config = {"ffmpeg": ffmpeg or "", "ffprobe": ffprobe or ""}
     with open(root / "config.json", "w", encoding="utf-8") as f:
         json.dump(config, f, indent=2)
     print("config.json written (ffmpeg/ffprobe paths).")
