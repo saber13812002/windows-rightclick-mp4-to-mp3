@@ -3,6 +3,12 @@ import subprocess
 import sys
 import re
 import tempfile
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, get_ffprobe
 
 
 def run(cmd, capture_output=False):
@@ -25,7 +31,7 @@ def detect_silence(input_path, silence_duration=5.0, silence_threshold=-30):
     silence_threshold: آستانه سکوت بر حسب dB (مثبت = سکوت)
     """
     cmd = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-i", input_path,
         "-af", f"silencedetect=noise={silence_threshold}dB:d={silence_duration}",
         "-f", "null",
@@ -62,7 +68,7 @@ def detect_silence(input_path, silence_duration=5.0, silence_threshold=-30):
 def get_audio_duration(input_path):
     """دریافت مدت زمان فایل صوتی"""
     cmd = [
-        "ffprobe",
+        get_ffprobe(),
         "-v", "error",
         "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1",
@@ -92,7 +98,7 @@ def remove_long_silence(input_path, silence_duration=5.0):
         base, ext = os.path.splitext(input_path)
         output_path = f"{base}_no_long_silence{ext}"
         cmd = [
-            "ffmpeg",
+            get_ffmpeg(),
             "-y",
             "-i", input_path,
             "-c", "copy",
@@ -101,7 +107,7 @@ def remove_long_silence(input_path, silence_duration=5.0):
         run(cmd)
         print(f"فایل خروجی: {output_path}")
         return
-    
+
     # دریافت مدت زمان کل فایل
     total_duration = get_audio_duration(input_path)
     
@@ -151,7 +157,7 @@ def remove_long_silence(input_path, silence_duration=5.0):
         output_path = f"{base}_no_long_silence{ext}"
         
         cmd = [
-            "ffmpeg",
+            get_ffmpeg(),
             "-y",
             "-ss", str(start),
             "-i", input_path,
@@ -177,7 +183,7 @@ def remove_long_silence(input_path, silence_duration=5.0):
             print(f"استخراج بخش {i+1}/{len(segments)}: {start:.2f}s تا {end:.2f}s")
             
             cmd = [
-                "ffmpeg",
+                get_ffmpeg(),
                 "-y",
                 "-ss", str(start),
                 "-i", input_path,
@@ -201,7 +207,7 @@ def remove_long_silence(input_path, silence_duration=5.0):
         
         print("در حال چسباندن بخش‌ها...")
         cmd = [
-            "ffmpeg",
+            get_ffmpeg(),
             "-y",
             "-f", "concat",
             "-safe", "0",

@@ -2,6 +2,12 @@ import os
 import subprocess
 import sys
 import re
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, get_ffprobe
 
 
 def run(cmd, capture_output=False):
@@ -24,7 +30,7 @@ def detect_silence(input_path, silence_duration=2.0, silence_threshold=-30):
     silence_threshold: آستانه سکوت بر حسب dB (مثبت = سکوت)
     """
     cmd = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-i", input_path,
         "-af", f"silencedetect=noise={silence_threshold}dB:d={silence_duration}",
         "-f", "null",
@@ -61,7 +67,7 @@ def detect_silence(input_path, silence_duration=2.0, silence_threshold=-30):
 def get_audio_duration(input_path):
     """دریافت مدت زمان فایل صوتی"""
     cmd = [
-        "ffprobe",
+        get_ffprobe(),
         "-v", "error",
         "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1",
@@ -133,7 +139,7 @@ def split_on_silence(input_path, silence_duration=2.0):
         print(f"  قطعه {i}/{len(segments)}: {start:.2f}s تا {end:.2f}s ({duration:.2f}s) -> {os.path.basename(output_file)}")
         
         cmd = [
-            "ffmpeg",
+            get_ffmpeg(),
             "-y",
             "-hide_banner",
             "-loglevel", "error",

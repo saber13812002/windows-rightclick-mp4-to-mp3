@@ -1,6 +1,12 @@
 import os
 import subprocess
 import sys
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, get_ffprobe
 
 
 def run(cmd):
@@ -9,7 +15,7 @@ def run(cmd):
 
 def ffprobe_duration_seconds(input_path):
     cmd = [
-        "ffprobe",
+        get_ffprobe(),
         "-v", "error",
         "-show_entries", "format=duration",
         "-of", "default=noprint_wrappers=1:nokey=1",
@@ -60,7 +66,7 @@ def split_midpoint_with_overlap(input_path):
 
     # Part 1: from 0 to midpoint
     cmd1 = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-y",
         "-hide_banner", "-loglevel", "error",
         "-i", input_path,
@@ -73,7 +79,7 @@ def split_midpoint_with_overlap(input_path):
 
     # Part 2: from (midpoint - 1s) to end
     cmd2 = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-y",
         "-hide_banner", "-loglevel", "error",
         "-ss", ss2,
