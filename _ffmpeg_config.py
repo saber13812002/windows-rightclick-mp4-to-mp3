@@ -8,6 +8,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+VERSION = "1.1"
 _LOG_FILE = None
 
 
@@ -43,7 +44,7 @@ def setup_context_menu_log():
         root = _project_root()
         log_path = root / "context_menu.log"
         _LOG_FILE = open(log_path, "a", encoding="utf-8")
-        header = f"\n=== {datetime.now().isoformat()} | {sys.executable} | argv: {sys.argv}\n"
+        header = f"\n=== v{VERSION} | {datetime.now().isoformat()} | {sys.executable} | argv: {sys.argv}\n"
         _LOG_FILE.write(header)
         _LOG_FILE.flush()
         sys.stdout = _Tee(sys.stdout, _LOG_FILE)

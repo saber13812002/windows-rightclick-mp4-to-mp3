@@ -10,12 +10,14 @@ import subprocess
 import sys
 from pathlib import Path
 
-VERSION = "1.0"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _ffmpeg_config import VERSION
 
 # Scripts and dirs we expect under project root
 REQUIRED = [
     "convert-mp4-to-mp3/convert_mp4_to_mp3.py",
     "convert-m4a-to-mp3/convert_m4a_to_mp3.py",
+    "convert-to-ogg/convert_to_ogg.py",
     "split-mp4-middle/split_middle_overlap.py",
     "add-music-to-mp3/add_music.bat",
     "remove-silence-mp3/remove_silence.py",
@@ -152,6 +154,8 @@ def main():
     entries = [
         (".mp4", "Convert to MP3", "Convert to MP3", reg_cmd(py, root / "convert-mp4-to-mp3" / "convert_mp4_to_mp3.py")),
         (".m4a", "Convert to MP3", "Convert to MP3", reg_cmd(py, root / "convert-m4a-to-mp3" / "convert_m4a_to_mp3.py")),
+        (".mp4", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
+        (".m4a", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
         (".mp4", "Split midpoint (1s overlap)", "Split midpoint (1s overlap)", reg_cmd(py, root / "split-mp4-middle" / "split_middle_overlap.py")),
         (".mp3", "Split midpoint (1s overlap)", "Split midpoint (1s overlap)", reg_cmd(py, root / "split-mp4-middle" / "split_middle_overlap.py")),
         (".mp3", "Add Custom Music", "Add Custom Music", f'\\"{esc(str(root / "add-music-to-mp3" / "add_music.bat"))}\\" \\"%1\\"'),
