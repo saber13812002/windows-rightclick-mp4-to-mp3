@@ -18,6 +18,7 @@ REQUIRED = [
     "convert-mp4-to-mp3/convert_mp4_to_mp3.py",
     "convert-m4a-to-mp3/convert_m4a_to_mp3.py",
     "convert-to-ogg/convert_to_ogg.py",
+    "batch-convert/batch_convert.py",
     "split-mp4-middle/split_middle_overlap.py",
     "add-music-to-mp3/add_music.bat",
     "remove-silence-mp3/remove_silence.py",
@@ -150,23 +151,41 @@ def main():
     def reg_cmd(py_exe, script_path):
         return f'\\"{esc(py_exe)}\\" \\"{esc(script_path)}\\" \\"%1\\"'
 
+    def reg_cmd_dir(py_exe, script_path, action):
+        return f'\\"{esc(py_exe)}\\" \\"{esc(script_path)}\\" \\"--action\\" \\"{action}\\" \\"%1\\"'
+
     py = python_exe
+    batch_script = root / "batch-convert" / "batch_convert.py"
     entries = [
         (".mp4", "Convert to MP3", "Convert to MP3", reg_cmd(py, root / "convert-mp4-to-mp3" / "convert_mp4_to_mp3.py")),
         (".m4a", "Convert to MP3", "Convert to MP3", reg_cmd(py, root / "convert-m4a-to-mp3" / "convert_m4a_to_mp3.py")),
         (".mp4", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
         (".m4a", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
+        (".mkv", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
+        (".avi", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
+        (".webm", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
+        (".mov", "Convert to OGG 48kHz", "Convert to OGG 48kHz", reg_cmd(py, root / "convert-to-ogg" / "convert_to_ogg.py")),
         (".mp4", "Split midpoint (1s overlap)", "Split midpoint (1s overlap)", reg_cmd(py, root / "split-mp4-middle" / "split_middle_overlap.py")),
         (".mp3", "Split midpoint (1s overlap)", "Split midpoint (1s overlap)", reg_cmd(py, root / "split-mp4-middle" / "split_middle_overlap.py")),
         (".mp3", "Add Custom Music", "Add Custom Music", f'\\"{esc(str(root / "add-music-to-mp3" / "add_music.bat"))}\\" \\"%1\\"'),
         (".mp3", "Remove Silence", "Remove Silence (2s+)", reg_cmd(py, root / "remove-silence-mp3" / "remove_silence.py")),
         (".mp3", "Remove Long Silence", "Remove Long Silence (5s+)", reg_cmd(py, root / "remove-long-silence-mp3" / "remove_long_silence.py")),
         (".mp3", "Split on Silence", "Split on Silence (2s+)", reg_cmd(py, root / "split-on-silence-mp3" / "split_on_silence.py")),
+        # Directory (folder) right-click batch actions
+        ("Directory", "Convert all in folder to MP3", "Convert all in folder to MP3", reg_cmd_dir(py, batch_script, "mp3")),
+        ("Directory", "Convert all in folder to OGG 48kHz", "Convert all in folder to OGG 48kHz", reg_cmd_dir(py, batch_script, "ogg")),
+        ("Directory", "Split midpoint for all in folder", "Split midpoint for all in folder", reg_cmd_dir(py, batch_script, "split_midpoint")),
+        ("Directory", "Remove silence for all in folder", "Remove silence for all in folder", reg_cmd_dir(py, batch_script, "remove_silence")),
+        ("Directory", "Remove long silence for all in folder", "Remove long silence for all in folder", reg_cmd_dir(py, batch_script, "remove_long_silence")),
+        ("Directory", "Split on silence for all in folder", "Split on silence for all in folder", reg_cmd_dir(py, batch_script, "split_on_silence")),
     ]
 
     lines = ["Windows Registry Editor Version 5.00", ""]
-    for ext, reg_key, label, cmd in entries:
-        base = f"HKEY_CLASSES_ROOT\\SystemFileAssociations\\{ext}\\shell\\{reg_key}"
+    for ext_or_dir, reg_key, label, cmd in entries:
+        if ext_or_dir == "Directory":
+            base = f"HKEY_CLASSES_ROOT\\Directory\\shell\\{reg_key}"
+        else:
+            base = f"HKEY_CLASSES_ROOT\\SystemFileAssociations\\{ext_or_dir}\\shell\\{reg_key}"
         lines.append(f"[{base}]")
         lines.append(f'@="{label}"')
         lines.append("")
