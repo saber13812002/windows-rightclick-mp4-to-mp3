@@ -1,5 +1,10 @@
 r"""
 یک‌بار اجرا کن: مسیر پایتون و ffmpeg را تشخیص می‌دهد، config.json و register_all.reg می‌سازد.
+اولویت تشخیص:
+  1. باندل شده (python/python.exe, ffmpeg/ffmpeg.exe)
+  2. آرگومان‌های --python / --ffmpeg
+  3. PATH سیستم
+
 بعد فایل register_all.reg را اجرا کن تا همه گزینه‌ها روی راست‌کلیک اضافه شوند.
 استفاده با مسیر دستی پایتون: python setup.py --python "C:\path\to\python.exe"
 """
@@ -26,6 +31,24 @@ REQUIRED = [
     "split-on-silence-mp3/split_on_silence.py",
     "_ffmpeg_config.py",
 ]
+
+
+def _detect_bundled_python(root: Path):
+    """Return path to bundled python.exe if it exists, else None."""
+    bundled = root / "python" / "python.exe"
+    return bundled if bundled.exists() else None
+
+
+def _detect_bundled_ffmpeg(root: Path):
+    """Return path to bundled ffmpeg.exe if it exists, else None."""
+    bundled = root / "ffmpeg" / "ffmpeg.exe"
+    return bundled if bundled.exists() else None
+
+
+def _detect_bundled_ffprobe(root: Path):
+    """Return path to bundled ffprobe.exe if it exists, else None."""
+    bundled = root / "ffmpeg" / "ffprobe.exe"
+    return bundled if bundled.exists() else None
 
 
 def run_check(root: Path, python_exe: Path) -> None:
@@ -56,12 +79,21 @@ def run_check(root: Path, python_exe: Path) -> None:
             with open(config_path, encoding="utf-8") as f:
                 cfg = json.load(f)
             lines.append("config.json: found")
-            lines.append(f"  ffmpeg:  {cfg.get('ffmpeg') or '(use PATH)'}")
-            lines.append(f"  ffprobe: {cfg.get('ffprobe') or '(use PATH)'}")
+            lines.append(f"  ffmpeg:  {cfg.get('ffmpeg') or '(use PATH / bundled)'}")
+            lines.append(f"  ffprobe: {cfg.get('ffprobe') or '(use PATH / bundled)'}")
         except Exception as e:
             lines.append(f"config.json: ERROR - {e}")
     else:
         lines.append("config.json: not found (run setup once to create)")
+    lines.append("")
+
+    # Check bundled dependencies
+    bundled_py = _detect_bundled_python(root)
+    bundled_ff = _detect_bundled_ffmpeg(root)
+    bundled_fp = _detect_bundled_ffprobe(root)
+    lines.append(f"Bundled python:    {'YES' if bundled_py else 'no'}")
+    lines.append(f"Bundled ffmpeg:    {'YES' if bundled_ff else 'no'}")
+    lines.append(f"Bundled ffprobe:   {'YES' if bundled_fp else 'no'}")
     lines.append("")
 
     lines.append("Required files:")
@@ -82,7 +114,13 @@ def run_check(root: Path, python_exe: Path) -> None:
                 ffmpeg_path = json.load(f).get("ffmpeg") or ""
         except Exception:
             pass
-    lines.append(f"ffmpeg in PATH or config: {'yes' if ffmpeg_path else 'NO (install ffmpeg)'}")
+    if not ffmpeg_path:
+        ffmpeg_path = str(bundled_ff) if bundled_ff else ""
+    
+    path_available = bool(ffmpeg_path) or bool(bundled_ff)
+    lines.append(f"ffmpeg available: {'yes' if path_available else 'NO (download ffmpeg)'}")
+    if bundled_ff:
+        lines.append(f"  (using bundled: {bundled_ff})")
     lines.append(f"Log file (after right-click runs): {root / 'context_menu.log'}")
     lines.append("--- end check ---")
     print("\n".join(lines))
@@ -108,12 +146,47 @@ def main():
         run_check(root, python_exe)
         return
 
-    python_exe = (Path(args.python).resolve() if args.python else Path(sys.executable)).resolve()
-    ffmpeg = (args.ffmpeg and str(Path(args.ffmpeg).resolve())) or shutil.which("ffmpeg") or ""
-    ffprobe = (args.ffprobe and str(Path(args.ffprobe).resolve())) or shutil.which("ffprobe") or ""
+    # ─── Detect python ─────────────────────────────────────────────────────
+    bundled_py = _detect_bundled_python(root)
+    if args.python:
+        python_exe = Path(args.python).resolve()
+        print(f"Using python from --python arg: {python_exe}")
+    elif bundled_py:
+        python_exe = bundled_py.resolve()
+        print(f"Using bundled python: {python_exe}")
+    else:
+        python_exe = Path(sys.executable).resolve()
+        print(f"Using python from PATH: {python_exe}")
 
+    # ─── Detect ffmpeg ─────────────────────────────────────────────────────
+    bundled_ff = _detect_bundled_ffmpeg(root)
+    bundled_fp = _detect_bundled_ffprobe(root)
+
+    if args.ffmpeg:
+        ffmpeg = str(Path(args.ffmpeg).resolve())
+        print(f"Using ffmpeg from --ffmpeg arg: {ffmpeg}")
+    elif bundled_ff:
+        ffmpeg = str(bundled_ff)
+        print(f"Using bundled ffmpeg: {ffmpeg}")
+    else:
+        ffmpeg = shutil.which("ffmpeg") or ""
+        if ffmpeg:
+            print(f"Using ffmpeg from PATH: {ffmpeg}")
+        else:
+            print("ffmpeg not found in PATH or bundled.")
+
+    if args.ffprobe:
+        ffprobe = str(Path(args.ffprobe).resolve())
+    elif bundled_fp:
+        ffprobe = str(bundled_fp)
+    elif ffmpeg:
+        ffprobe = str(Path(ffmpeg).parent / "ffprobe.exe")
+    else:
+        ffprobe = shutil.which("ffprobe") or ""
+
+    # ─── Interactive prompt if no ffmpeg found ─────────────────────────────
     if not ffmpeg and getattr(sys.stdin, "isatty", lambda: False) and sys.stdin.isatty():
-        prompt = "ffmpeg not in PATH. Enter path to ffmpeg.exe or its folder (e.g. from Explorer bar): "
+        prompt = "ffmpeg not found. Enter path to ffmpeg.exe or its folder (e.g. from Explorer bar): "
         try:
             user_ffmpeg = input(prompt).strip().strip('"')
         except (EOFError, OSError):
