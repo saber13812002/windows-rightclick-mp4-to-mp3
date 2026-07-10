@@ -23,9 +23,20 @@ $BuildDir  = Join-Path $RepoRoot "build"
 $SpecDir   = Join-Path $RepoRoot "build"
 
 # ─── helpers ────────────────────────────────────────────────────────────────
-function Write-Status  { param([string]$Message) Write-Host ">>> $Message" -ForegroundColor Cyan }
-function Write-Success { param([string]$Message) Write-Host "✓ $Message" -ForegroundColor Green }
-function Write-Warning { param([string]$Message) Write-Host "⚠ $Message" -ForegroundColor Yellow }
+function Write-Status {
+    param([string]$Message)
+    Write-Host ">>> $Message" -ForegroundColor Cyan
+}
+
+function Write-Success {
+    param([string]$Message)
+    Write-Host "✓ $Message" -ForegroundColor Green
+}
+
+function Write-Warning {
+    param([string]$Message)
+    Write-Host "⚠ $Message" -ForegroundColor Yellow
+}
 
 # ─── 1. Ensure PyInstaller is installed ─────────────────────────────────────
 Write-Status "Checking PyInstaller..."
@@ -69,7 +80,6 @@ foreach ($s in $Scripts) {
     }
 
     Write-Status "Compiling '$name'..."
-    $outDir = Join-Path $DistDir $name
     pyinstaller --onefile `
         --distpath $DistDir `
         --specpath $SpecDir `
@@ -101,14 +111,13 @@ if ((Test-Path $FfmpegExe) -and (Test-Path $FfprobeExe) -and (-not $Force)) {
     Invoke-WebRequest -Uri $FfmpegUrl -OutFile $FfmpegZip -UseBasicParsing
     Write-Success "Downloaded FFmpeg zip"
 
-    Write-Status "Extracting ffmpeg.exe + ffprobe.exe → dist/ffmpeg/ ..."
+    Write-Status "Extracting ffmpeg.exe + ffprobe.exe to dist/ffmpeg/ ..."
     $tempExtract = Join-Path $env:TEMP "ffmpeg_extract_$([System.Guid]::NewGuid().ToString('N'))"
     New-Item -ItemType Directory -Path $tempExtract -Force | Out-Null
     try {
         Expand-Archive -Path $FfmpegZip -DestinationPath $tempExtract -Force
-        $binDir = Get-ChildItem -Path $tempExtract -Recurse -Directory `
-            | Where-Object { $_.Name -eq "bin" } `
-            | Select-Object -First 1
+        $binDirs = Get-ChildItem -Path $tempExtract -Recurse -Directory
+        $binDir = $binDirs | Where-Object { $_.Name -eq "bin" } | Select-Object -First 1
         if (-not $binDir) { throw "Could not find bin/ inside FFmpeg archive." }
 
         New-Item -ItemType Directory -Path $FfmpegDir -Force | Out-Null
@@ -143,16 +152,19 @@ Remove-Item -Path $BuildDir -Recurse -Force -ErrorAction SilentlyContinue
 Get-ChildItem -Path $RepoRoot -Filter "*.spec" | Remove-Item -Force -ErrorAction SilentlyContinue
 
 # ─── 7. Summary ───────────────────────────────────────────────────────────
+$totalSize = Get-ChildItem -Path $DistDir -Recurse | Measure-Object -Property Length -Sum
+$sizeMB = "{0:N1} MB" -f ($totalSize.Sum / 1MB)
+
 Write-Host ""
-Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Green
+Write-Host ("=" * 70) -ForegroundColor Green
 Write-Host "  Build complete!" -ForegroundColor Green
 Write-Host "  Output folder: $DistDir" -ForegroundColor White
-Write-Host "" -ForegroundColor White
-Write-Host "  Total size: $(Get-ChildItem -Path $DistDir -Recurse | Measure-Object -Property Length -Sum | ForEach-Object { '{0:N1} MB' -f ($_.Sum / 1MB) })" -ForegroundColor White
-Write-Host "" -ForegroundColor White
+Write-Host ""
+Write-Host "  Total size: $sizeMB" -ForegroundColor White
+Write-Host ""
 Write-Host "  To distribute:" -ForegroundColor Yellow
 Write-Host "    1. Zip the entire dist/ folder" -ForegroundColor White
-Write-Host "    2. On target machine: unzip, right-click install.bat → Run as Administrator" -ForegroundColor White
-Write-Host "" -ForegroundColor White
+Write-Host "    2. On target machine: unzip, right-click install.bat - Run as Administrator" -ForegroundColor White
+Write-Host ""
 Write-Host "  End users do NOT need Python or FFmpeg installed." -ForegroundColor Green
-Write-Host "══════════════════════════════════════════════════════════════" -ForegroundColor Green
+Write-Host ("=" * 70) -ForegroundColor Green
