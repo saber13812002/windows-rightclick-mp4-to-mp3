@@ -3,9 +3,16 @@ config.json
 register_all.reg
 context_menu.log
 
-# Bundled dependencies (downloaded by download-deps.ps1)
-# These are large binaries - comment out if you want to track them in git
+# PyInstaller build artifacts
+/dist/
+/build/
+*.spec
+
+# Bundled dependencies (downloaded by build-exes.ps1)
+# Comment out if you want to track ffmpeg binaries in git
 /ffmpeg/
+
+# Embedded Python (alternative approach)
 /python/
 
 # IDE / editor

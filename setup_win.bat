@@ -4,23 +4,30 @@ setlocal enabledelayedexpansion
 set "SCRIPT_DIR=%~dp0"
 cd /d "%SCRIPT_DIR%"
 
-REM ─── اولویت ۱: پایتون باندل شده ───────────────────────────────────────────
+REM ─── اولویت ۱: setup.exe کامپایل شده ─────────────────────────────────────
+if exist "%SCRIPT_DIR%setup.exe" (
+    echo Using compiled setup.exe
+    set "SETUP_CMD=%SCRIPT_DIR%setup.exe"
+    goto :detect_ffmpeg
+)
+
+REM ─── اولویت ۲: پایتون باندل شده ──────────────────────────────────────────
 if exist "%SCRIPT_DIR%python\python.exe" (
     set "PY=%SCRIPT_DIR%python\python.exe"
     echo Using bundled python: !PY!
     goto :run_setup
 )
 
-REM ─── اولویت ۲: py launcher ────────────────────────────────────────────────
+REM ─── اولویت ۳: py launcher ────────────────────────────────────────────────
 set "PY="
 for /f "delims=" %%i in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
 if defined PY goto :run_setup
 
-REM ─── اولویت ۳: python from PATH ───────────────────────────────────────────
+REM ─── اولویت ۴: python from PATH ───────────────────────────────────────────
 for /f "delims=" %%i in ('python -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
 if defined PY goto :run_setup
 
-REM ─── اولویت ۴: از کاربر بپرس ─────────────────────────────────────────────
+REM ─── اولویت ۵: از کاربر بپرس ─────────────────────────────────────────────
 echo Python not found in PATH or bundled.
 set /p "PY=Enter full path to python.exe: "
 set "PY=!PY:"=!"
@@ -32,7 +39,9 @@ if not defined PY (
 
 :run_setup
 echo Using Python: %PY%
+set "SETUP_CMD="%PY%" "%SCRIPT_DIR%setup.py""
 
+:detect_ffmpeg
 REM ─── تشخیص ffmpeg باندل شده ──────────────────────────────────────────────
 set "FFMPEG_ARG="
 if exist "%SCRIPT_DIR%ffmpeg\ffmpeg.exe" (
@@ -51,6 +60,6 @@ if errorlevel 1 (
 )
 
 :exec_setup
-"%PY%" "%SCRIPT_DIR%setup.py" --python "%PY%" %FFMPEG_ARG%
+%SETUP_CMD% %FFMPEG_ARG%
 echo.
 pause

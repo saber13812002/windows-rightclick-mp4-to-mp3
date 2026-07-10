@@ -6,92 +6,94 @@
 
 ---
 
-## نصب سریع (روش پیشنهادی — فقط ۳ مرحله)
+## 🚀 نصب فوق‌العاده سریع (روی ویندوز خام)
 
-روی هر **ویندوز خام** (حتی بدون Python و FFmpeg) با این سه مرحله کار می‌کند:
+**روی هر ویندوزی** — حتی بدون Python و FFmpeg — کار می‌کند.
 
-### 1. دانلود وابستگی‌ها (یک بار)
+### روش ۱: استفاده از EXEهای کامپایل شده (پیشنهادی)
 
-روی [`download-deps.ps1`](download-deps.ps1) راست‌کلیک کنید → **"Run with PowerShell"** را انتخاب کنید.
+اگر فایل‌های آماده در پوشه [`dist/`](dist/) دارید:
 
-این اسکریپت به صورت خودکار:
-- **FFmpeg** (نسخه پرتابل) را از gyan.dev دانلود می‌کند → [`ffmpeg/`](ffmpeg/)
-- **Embedded Python 3.11** را از python.org دانلود می‌کند → [`python/`](python/)
+**۱.** روی [`install.bat`](install.bat) راست‌کلیک کنید → **Run as Administrator**
 
-> ⚠ نیاز به اینترنت دارد. حجم کل دانلود: ~35 MB
+**۲.** راست‌کلیک روی فایل‌های mp4/m4a/mp3 → همه گزینه‌ها در منو.
 
-### 2. نصب (با دسترسی Admin)
+> ✅ نیاز به Python یا FFmpeg جداگانه ندارد — همه چیز در EXEها و [`ffmpeg/`](ffmpeg/) باندل شده است.
 
-روی [`install.bat`](install.bat) راست‌کلیک کنید → **"Run as Administrator"** را انتخاب کنید.
+### روش ۲: ساخت EXEها در محل
+
+اگر کد منبع را clone کرده‌اید و می‌خواهید EXEها را خودتان بسازید:
+
+**۱.** روی [`build-exes.ps1`](build-exes.ps1) راست‌کلیک کنید → **Run with PowerShell**
 
 این اسکریپت:
-- به صورت خودکار دسترسی Admin می‌گیرد (UAC)
-- Python و FFmpeg باندل شده را تشخیص می‌دهد
-- فایل [`register_all.reg`](register_all.reg) را با مسیرهای درست می‌سازد
-- رجیستری را import می‌کند
+- PyInstaller را نصب می‌کند (یک بار)
+- همه اسکریپت‌های پایتون را به EXE کامپایل می‌کند → [`dist/`](dist/)
+- FFmpeg پرتابل را دانلود می‌کند → [`dist/ffmpeg/`](dist/ffmpeg/)
+- فایل‌های کمکی را کپی می‌کند
 
-### 3. استفاده
+**۲.** سپس روی [`dist/install.bat`](dist/install.bat) راست‌کلیک کنید → **Run as Administrator**
 
-روی هر فایل (یا پوشه) راست‌کلیک کنید ← گزینه مورد نظر را انتخاب کنید.
+**۳.** راست‌کلیک روی فایل‌ها → همه گزینه‌ها در منو.
 
 ---
 
-## روش جایگزین (اگر Python از قبل نصب است)
+## 📦 روش جایگزین (با Python سیستم)
 
-اگر Python 3 از قبل روی سیستم نصب است، می‌توانید فقط FFmpeg را دانلود کنید و از روش قبلی استفاده کنید:
+اگر Python 3 از قبل روی سیستم نصب است:
 
 ```powershell
-# فقط FFmpeg را دانلود کن (بدون Python)
-.\download-deps.ps1
-```
-
-سپس:
-```powershell
-# یا setup_win.bat را اجرا کن (به Python سیستم نیاز دارد)
-setup_win.bat
-```
-
-یا با دستور مستقیم:
-```powershell
+# مرحله ۱: اجرای setup
 python setup.py
+
+# مرحله ۲: import رجیستری
+# (فایل register_all.reg باز می‌شود − Merge یا Allow را بزنید)
 ```
 
-بعد از اجرای هر کدام، فایل `register_all.reg` باز می‌شود — **Merge** یا **Allow** را بزنید.
+یا دابل‌کلیک کنید روی **`setup_win.bat`**
 
 ---
 
-## نصب دستی (قدیمی)
+## 🗑️ حذف منوهای اضافه شده
 
-**روش پیشنهادی (یک‌بار روی هر سیستم):** رجوع به [SETUP.md](SETUP.md) — سه مرحله ساده؛ مسیر پایتون و ffmpeg خودکار تشخیص داده می‌شود و همه گزینه‌ها یک‌جا روی راست‌کلیک ثبت می‌شوند.
-
-روش دستی (در صورت نیاز): برای هر فیچر جداگانه فایل `.reg` مربوطه را اجرا کنید (مسیرهای داخل فایل را با مسیر سیستم خودت عوض کن). بعد از اجرا در UAC گزینه Allow را بزن.
+روی [`uninstall.bat`](uninstall.bat) راست‌کلیک کنید → **Run as Administrator** → تمام گزینه‌ها از منوی راست‌کلیک پاک می‌شوند.
 
 ---
 
-## حذف منوهای اضافه شده
-
-روی [`uninstall.bat`](uninstall.bat) راست‌کلیک کنید → **"Run as Administrator"** → تمام گزینه‌ها از منوی راست‌کلیک پاک می‌شوند.
-
----
-
-## ساختار پروژه
+## 📁 ساختار پروژه
 
 ```
-convert_mp4_to_mp3/
-├── install.bat                       # [NEW] نصاب یک‌کلیک (Admin)
-├── uninstall.bat                     # [NEW] حذف‌کننده
-├── download-deps.ps1                 # [NEW] دانلود Python + FFmpeg پرتابل
-├── ffmpeg/                           # [NEW] FFmpeg پرتابل (بعد از دانلود)
-│   ├── ffmpeg.exe
-│   └── ffprobe.exe
-├── python/                           # [NEW] Embedded Python (بعد از دانلود)
-│   └── python.exe
-├── _ffmpeg_config.py                 # [MODIFIED] تشخیص ffmpeg باندل شده
-├── setup.py                          # [MODIFIED] تشخیص خودکار python/ffmpeg
-├── setup_win.bat                     # [MODIFIED] اولویت با python باندل شده
-├── register_all.reg                  # ساخته شده توسط setup.py
-├── config.json                       # ساخته شده توسط setup.py
-├── context_menu.log                  # لاگ اجراها
+windows-rightclick-mp4-to-mp3/
+│
+├── install.bat                       # نصاب یک‌کلیک (Admin)
+├── uninstall.bat                     # حذف‌کننده
+├── build-exes.ps1                    # [NEW] کامپایل EXE + دانلود FFmpeg
+├── download-deps.ps1                 # دانلود Python + FFmpeg پرتابل
+├── setup.py                          # [MODIFIED] تشخیص خودکار python/ffmpeg/EXE
+├── setup_win.bat                     # [MODIFIED] اولویت با EXE/python باندل شده
+├── _ffmpeg_config.py                 # [MODIFIED] تشخیص PyInstaller + ffmpeg باندل شده
+│
+├── dist/                             # [NEW] خروجی build-exes.ps1
+│   ├── install.bat
+│   ├── uninstall.bat
+│   ├── setup.exe
+│   ├── convert_mp4_to_mp3.exe
+│   ├── convert_m4a_to_mp3.exe
+│   ├── convert_to_ogg.exe
+│   ├── batch_convert.exe
+│   ├── split_middle_overlap.exe
+│   ├── remove_silence.exe
+│   ├── remove_long_silence.exe
+│   ├── split_on_silence.exe
+│   ├── config.json
+│   ├── register_all.reg
+│   ├── context_menu.log
+│   ├── ffmpeg/
+│   │   ├── ffmpeg.exe
+│   │   └── ffprobe.exe
+│   └── add-music-to-mp3/
+│       ├── add_music.bat             # [MODIFIED] استفاده از ffmpeg باندل شده
+│       └── *.mp3
 │
 ├── convert-mp4-to-mp3/
 │   ├── convert_mp4_to_mp3.py
@@ -108,7 +110,7 @@ convert_mp4_to_mp3/
 ├── split-mp3-middle/
 │   └── add_right_click_split_middle_python_mp3.reg
 ├── add-music-to-mp3/
-│   ├── add_music.bat                 # [MODIFIED] استفاده از ffmpeg باندل شده
+│   ├── add_music.bat
 │   ├── add music.reg
 │   ├── start.mp3
 │   ├── middle.mp3
@@ -126,95 +128,65 @@ convert_mp4_to_mp3/
 
 ---
 
-## فیچرهای موجود
+## ✨ فیچرهای موجود
 
-### 1. تبدیل MP4 به MP3
-**پوشه**: [`convert-mp4-to-mp3/`](convert-mp4-to-mp3/)  
-تبدیل فایل‌های ویدیویی MP4 به فایل‌های صوتی MP3.
+### فایل → راست‌کلیک
 
-### 2. تبدیل M4A به MP3
-**پوشه**: [`convert-m4a-to-mp3/`](convert-m4a-to-mp3/)  
-تبدیل فایل‌های صوتی M4A به فرمت MP3.
+| فیچر | پسوند | توضیح |
+|------|-------|-------|
+| **Convert to MP3** | `.mp4`, `.m4a` | تبدیل به MP3 |
+| **Convert to OGG 48kHz** | `.mp4`, `.m4a`, `.mkv`, `.avi`, `.webm`, `.mov` | تبدیل به OGG (مناسب پیام‌رسان) |
+| **Split midpoint (1s overlap)** | `.mp4`, `.mp3` | تقسیم از وسط با ۱ ثانیه هم‌پوشانی |
+| **Add Custom Music** | `.mp3` | اضافه کردن start/middle/finish به MP3 |
+| **Remove Silence (2s+)** | `.mp3` | حذف سکوت‌های ۲+ ثانیه |
+| **Remove Long Silence (5s+)** | `.mp3` | حذف سکوت‌های طولانی ۵+ ثانیه |
+| **Split on Silence (2s+)** | `.mp3` | تقسیم بر اساس سکوت‌های ۲+ ثانیه |
 
-### 3. تبدیل به OGG 48kHz
-**پوشه**: [`convert-to-ogg/`](convert-to-ogg/)  
-تبدیل فایل‌های MP4, M4A, MKV, AVI, WEBM, MOV به OGG با کیفیت 48kHz (مناسب برای پیام‌رسان‌ها).
+### پوشه → راست‌کلیک (Batch)
 
-### 4. تقسیم ویدیو از وسط با هم‌پوشانی (MP4)
-**پوشه**: [`split-mp4-middle/`](split-mp4-middle/)  
-تقسیم فایل‌های ویدیویی MP4 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای.
-
-### 5. تقسیم فایل صوتی از وسط با هم‌پوشانی (MP3)
-**پوشه**: [`split-mp3-middle/`](split-mp3-middle/)  
-تقسیم فایل‌های صوتی MP3 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای.
-
-### 6. اضافه کردن موزیک به فایل‌های MP3
-**پوشه**: [`add-music-to-mp3/`](add-music-to-mp3/)  
-اضافه کردن فایل‌های موزیک ثابت (start.mp3، middle.mp3، finish.mp3) به ابتدا، وسط و انتهای فایل‌های MP3.
-
-### 7. حذف سکوت از فایل‌های MP3
-**پوشه**: [`remove-silence-mp3/`](remove-silence-mp3/)  
-حذف خودکار بخش‌های سکوت 2 ثانیه‌ای یا بیشتر.
-
-### 8. حذف سکوت‌های طولانی از فایل‌های MP3
-**پوشه**: [`remove-long-silence-mp3/`](remove-long-silence-mp3/)  
-حذف خودکار بخش‌های سکوت طولانی (5 ثانیه‌ای یا بیشتر). مناسب برای فایل‌های طولانی.
-
-### 9. تقسیم موسیقی بر اساس سکوت
-**پوشه**: [`split-on-silence-mp3/`](split-on-silence-mp3/)  
-تقسیم فایل صوتی MP3 به قطعات جداگانه بر اساس سکوت‌های 2 ثانیه‌ای یا بیشتر.
-
----
-
-## عملیات Batch (راست‌کلیک روی پوشه)
-
-علاوه بر راست‌کلیک روی فایل‌ها، می‌توانید روی **پوشه** راست‌کلیک کنید و یکی از گزینه‌های زیر را انتخاب کنید:
-
-- **Convert all in folder to MP3** — تبدیل همه MP4/M4A به MP3
-- **Convert all in folder to OGG 48kHz** — تبدیل همه به OGG
-- **Split midpoint for all in folder** — تقسیم همه فایل‌ها از وسط
-- **Remove silence for all in folder** — حذف سکوت از همه MP3ها
-- **Remove long silence for all in folder** — حذف سکوت‌های طولانی
-- **Split on silence for all in folder** — تقسیم همه بر اساس سکوت
+| فیچر | توضیح |
+|------|-------|
+| **Convert all in folder to MP3** | تبدیل همه فایل‌های پوشه به MP3 |
+| **Convert all in folder to OGG 48kHz** | تبدیل همه به OGG |
+| **Split midpoint for all in folder** | تقسیم همه از وسط |
+| **Remove silence for all in folder** | حذف سکوت همه |
+| **Remove long silence for all in folder** | حذف سکوت‌های طولانی همه |
+| **Split on silence for all in folder** | تقسیم همه بر اساس سکوت |
 
 > فایل‌هایی که خروجی‌شان از قبل ساخته شده، **رد** می‌شوند (بدون سؤال).
 
 ---
 
-## پیش‌نیازها (برای روش دستی)
+## 🔧 توسعه
 
-- نصب **Python 3** (پایتون 3.11 یا بالاتر) — در روش باندل شده نیاز نیست
-- نصب **FFmpeg** (شامل `ffmpeg` و `ffprobe`) و اضافه بودن به PATH سیستم — در روش باندل شده نیاز نیست
-- سیستم عامل **Windows**
+### پیش‌نیازهای ساخت (Build)
 
----
+- **Python 3.11+** (فقط برای ماشین توسعه‌دهنده)
+- **pip** (برای نصب PyInstaller)
+- اینترنت (برای دانلود FFmpeg)
 
-## اجرای دستی اسکریپت‌ها
+### ساخت نسخه پرتابل
 
-همه اسکریپت‌های پایتون را می‌توان به صورت دستی نیز اجرا کرد:
-
-```bash
-python convert-mp4-to-mp3/convert_mp4_to_mp3.py "path\to\file.mp4"
-python convert-m4a-to-mp3/convert_m4a_to_mp3.py "path\to\file.m4a"
-python split-mp4-middle/split_middle_overlap.py "path\to\file.mp4"
-python remove-silence-mp3/remove_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python remove-silence-mp3/remove_silence.py "path\to\file.mp3" 3.0
-python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3" 10.0
-python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3" 3.0
+```powershell
+.\build-exes.ps1
 ```
 
+خروجی در [`dist/`](dist/) — می‌توانید کل پوشه را Zip کنید و به هر سیستم ویندوزی ببرید.
+
+### نکات توسعه
+
+- هر فیچر جدید = یک فایل پایتون + یک پوشه مجزا
+- اسکریپت‌ها از `_ffmpeg_config.py` برای یافتن ffmpeg استفاده می‌کنند
+- هنگام ساخت EXE با PyInstaller، `_project_root()` مسیر EXE را برمی‌گرداند
+- فایل `config.json` در کنار EXEها قرار می‌گیرد
+
 ---
 
-## یادداشت توسعه
+## 📝 یادداشت‌ها
 
-- هر فیچر جدید باید شامل یک فایل پایتون و یک فایل رجیستری باشد
-- هر فیچر باید در پوشه جداگانه با نام انگلیسی قرار بگیرد
-- نام پوشه‌ها باید واضح و توصیفی باشند (استفاده از خط تیره برای جدا کردن کلمات)
-- نام فایل‌ها باید واضح و توصیفی باشند
-- هر فیچر جدید باید در این README مستندسازی شود
-- هنگام ساخت فایل رجیستری جدید، مسیر فایل پایتون باید به مسیر کامل در پوشه مربوطه اشاره کند
+- **نسخه:** v{VERSION} (در [`_ffmpeg_config.py`](_ffmpeg_config.py))
+- **لاگ:** هر اجرا در `context_menu.log` ثبت می‌شود
+- **رجیستری:** `register_all.reg` توسط `setup.py` ساخته می‌شود
+- **سازگاری:** Windows 10 / 11
+
+برای اطلاعات بیشتر به [SETUP.md](SETUP.md) و [IMPLEMENTATION.md](IMPLEMENTATION.md) مراجعه کنید.

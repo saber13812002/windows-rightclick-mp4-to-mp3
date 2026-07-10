@@ -120,4 +120,3 @@ def get_ffprobe():
         return bundled
     c = _load_config()
     return c.get("ffprobe") or "ffprobe"
-

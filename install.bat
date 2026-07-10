@@ -2,7 +2,6 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-REM ─── config ───────────────────────────────────────────────────────────────
 set "SCRIPT_DIR=%~dp0"
 cd /d "%SCRIPT_DIR%"
 
@@ -19,60 +18,68 @@ if %errorlevel% neq 0 (
     exit /b 0
 )
 
-REM ─── 2. Check dependencies ─────────────────────────────────────────────
-echo [1/4] Checking dependencies...
+REM ─── 2. Detect setup method ────────────────────────────────────────────
+echo [1/4] Detecting components...
+
+if exist "%SCRIPT_DIR%setup.exe" (
+    echo   ✓ Found compiled setup.exe
+    set "SETUP_CMD=%SCRIPT_DIR%setup.exe"
+    goto :run_setup
+)
 
 if exist "%SCRIPT_DIR%python\python.exe" (
-    echo   ✓ Bundled Python found
-    set "PY=%SCRIPT_DIR%python\python.exe"
-) else (
-    set "PY="
-    for /f "delims=" %%i in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
-    if defined PY (
-        echo   ✓ Python found via py launcher
-    ) else (
-        for /f "delims=" %%i in ('python -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
-        if defined PY (
-            echo   ✓ Python found in PATH
-        )
-    )
+    echo   ✓ Found bundled Python
+    set "SETUP_CMD=%SCRIPT_DIR%python\python.exe "%SCRIPT_DIR%setup.py""
+    goto :run_setup
 )
 
-if not defined PY (
-    echo   ✗ Python not found!
-    echo.
-    echo   Please install Python 3 or run download-deps.ps1 first.
-    echo   Right-click download-deps.ps1 ^> "Run with PowerShell"
-    echo.
-    pause
-    exit /b 1
+set "PY="
+for /f "delims=" %%i in ('py -3 -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
+if defined PY (
+    echo   ✓ Found Python via py launcher
+    set "SETUP_CMD=""!PY!" "%SCRIPT_DIR%setup.py""
+    goto :run_setup
 )
 
+for /f "delims=" %%i in ('python -c "import sys; print(sys.executable)" 2^>nul') do set "PY=%%i"
+if defined PY (
+    echo   ✓ Found Python in PATH
+    set "SETUP_CMD=""!PY!" "%SCRIPT_DIR%setup.py""
+    goto :run_setup
+)
+
+echo   ✗ No Python, setup.exe, or bundled Python found!
+echo.
+echo   Please run build-exes.ps1 first to compile the EXEs,
+echo   or install Python 3 and re-run this installer.
+echo.
+pause
+exit /b 1
+
+:run_setup
+
+REM ─── 3. Detect bundled FFmpeg ──────────────────────────────────────────
+set "FFMPEG_ARG="
 if exist "%SCRIPT_DIR%ffmpeg\ffmpeg.exe" (
     echo   ✓ Bundled FFmpeg found
+    set "FFMPEG_ARG=--ffmpeg "%SCRIPT_DIR%ffmpeg\ffmpeg.exe""
 ) else (
     echo   ⚠ Bundled FFmpeg not found (will try PATH)
 )
-
 echo.
 
-REM ─── 3. Run setup ──────────────────────────────────────────────────────
-echo [2/4] Running setup to generate registry file...
-if exist "%SCRIPT_DIR%ffmpeg\ffmpeg.exe" (
-    "%PY%" "%SCRIPT_DIR%setup.py" --python "%PY%" --ffmpeg "%SCRIPT_DIR%ffmpeg\ffmpeg.exe"
-) else (
-    "%PY%" "%SCRIPT_DIR%setup.py" --python "%PY%"
-)
-
+REM ─── 4. Run setup ──────────────────────────────────────────────────────
+echo [2/4] Generating registry file...
+%SETUP_CMD% %FFMPEG_ARG%
 if %errorlevel% neq 0 (
     echo   ✗ Setup failed!
     pause
     exit /b 1
 )
-echo   ✓ Setup complete
+echo   ✓ Registry file generated
 echo.
 
-REM ─── 4. Import registry ────────────────────────────────────────────────
+REM ─── 5. Import registry ────────────────────────────────────────────────
 echo [3/4] Importing registry entries...
 if exist "%SCRIPT_DIR%register_all.reg" (
     reg import "%SCRIPT_DIR%register_all.reg"
@@ -91,7 +98,7 @@ if exist "%SCRIPT_DIR%register_all.reg" (
 )
 echo.
 
-REM ─── 5. Done ───────────────────────────────────────────────────────────
+REM ─── 6. Done ───────────────────────────────────────────────────────────
 echo [4/4] Installation complete!
 echo.
 echo ============================================================
