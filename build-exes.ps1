@@ -44,12 +44,14 @@ if (-not $pythonExe) {
 Write-Status "Using Python: $pythonExe"
 
 Write-Status "Checking PyInstaller..."
-& $pythonExe -c "import PyInstaller" 2>$null
-if ($LASTEXITCODE -ne 0) {
+$pyCheck = & $pythonExe -c "import PyInstaller; print('yes')" 2>$null
+$pyInstalled = ($pyCheck -eq 'yes')
+if (-not $pyInstalled) {
     Write-Status "Installing PyInstaller via pip..."
-    & $pythonExe -m pip install pyinstaller --quiet
-    if ($LASTEXITCODE -ne 0) {
-        throw "Failed to install PyInstaller."
+    & $pythonExe -m pip install pyinstaller --quiet 2>&1
+    $pipExit = $LASTEXITCODE
+    if ($pipExit -ne 0) {
+        throw "Failed to install PyInstaller (pip exit code: $pipExit)."
     }
     Write-Success "PyInstaller installed."
 } else {
