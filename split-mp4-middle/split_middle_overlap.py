@@ -1,4 +1,5 @@
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -13,18 +14,16 @@ def run(cmd):
     subprocess.run(cmd, check=True)
 
 
-def ffprobe_duration_seconds(input_path):
-    cmd = [
-        get_ffprobe(),
-        "-v", "error",
-        "-show_entries", "format=duration",
-        "-of", "default=noprint_wrappers=1:nokey=1",
-        "--",
-        input_path,
-    ]
-    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    s = (result.stdout or "").strip()
-    return float(s)
+def media_duration_seconds(input_path):
+    """Get media duration in seconds using ffmpeg (ffprobe is not bundled)."""
+    cmd = [get_ffmpeg(), "-i", input_path]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    for line in (result.stderr or "").splitlines():
+        m = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", line)
+        if m:
+            h, mi, s = m.groups()
+            return float(h) * 3600 + float(mi) * 60 + float(s)
+    raise RuntimeError(f"Could not determine duration of {input_path}")
 
 
 def format_hhmmss_mmm(seconds):
@@ -44,7 +43,7 @@ def split_midpoint_with_overlap(input_path):
         print(f"File not found: {input_path}")
         sys.exit(1)
 
-    duration = ffprobe_duration_seconds(input_path)
+    duration = media_duration_seconds(input_path)
     if duration <= 0:
         print("Media duration is zero or invalid.")
         sys.exit(1)
@@ -101,5 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
