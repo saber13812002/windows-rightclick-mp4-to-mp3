@@ -1,11 +1,198 @@
-[1103/133942.972:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/134237.208:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/134338.297:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/134424.335:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/134511.193:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/134527.552:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/150816.389:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/150816.416:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/150843.104:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/151737.965:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
-[1103/152358.491:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
+[2025-11-27 17:22:51] [m4a] Script called with argument: C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a
+[2025-11-27 17:22:51] [m4a] Starting conversion. Input='C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a' Output='C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.mp3'
+[2025-11-27 17:22:51] [m4a] Running command: ffmpeg -y -i C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.mp3
+[2025-11-27 17:22:51] [m4a] Exception during conversion:
+[2025-11-27 17:22:51] [m4a] Traceback (most recent call last):
+  File "C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 43, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2025-11-27 17:35:56] [m4a] Script called with argument: C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a
+[2025-11-27 17:35:56] [m4a] Starting conversion. Input='C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a' Output='C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.mp3'
+[2025-11-27 17:35:56] [m4a] Running command: C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe -y -i C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.m4a C:\Users\s.tabatabaei\Downloads\چالش_ساخت_جستجوگر_هوشمند_علوم_عقلی.mp3
+[2025-11-27 17:36:12] [m4a] ffmpeg return code: 0
+[2025-11-27 17:36:12] [m4a] ffmpeg stderr:
+[2025-11-27 17:36:12] [m4a] ffmpeg version N-93397-gf8075b2c91 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 8.2.1 (GCC) 20190212
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 26.100 / 56. 26.100
+  libavcodec     58. 47.103 / 58. 47.103
+  libavformat    58. 26.101 / 58. 26.101
+  libavdevice    58.  6.101 / 58.  6.101
+  libavfilter     7. 48.100 /  7. 48.100
+  libswscale      5.  4.100 /  5.  4.100
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\Downloads\ع†ط§ظ„ط´_ط³ط§ط®طھ_ط¬ط³طھط¬ظˆع¯ط±_ظ‡ظˆط´ظ…ظ†ط¯_ط¹ظ„ظˆظ…_ط¹ظ‚ظ„غŒ.m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2025-11-26T16:05:45.000000Z
+    encoder         : Google
+  Duration: 00:19:37.46, start: 0.000000, bitrate: 257 kb/s
+    Stream #0:0(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      creation_time   : 2025-11-26T16:05:45.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\Downloads\ع†ط§ظ„ط´_ط³ط§ط®طھ_ط¬ط³طھط¬ظˆع¯ط±_ظ‡ظˆط´ظ…ظ†ط¯_ط¹ظ„ظˆظ…_ط¹ظ‚ظ„غŒ.mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf58.26.101
+    Stream #0:0(und): Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp (default)
+    Metadata:
+      creation_time   : 2025-11-26T16:05:45.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc58.47.103 libmp3lame
+size=     512kB time=00:00:46.13 bitrate=  90.9kbits/s speed=91.8x    
+size=    1280kB time=00:01:37.85 bitrate= 107.2kbits/s speed=97.6x    
+size=    2304kB time=00:02:30.07 bitrate= 125.8kbits/s speed=99.8x    
+size=    3072kB time=00:03:18.68 bitrate= 126.7kbits/s speed=99.1x    
+size=    3840kB time=00:04:10.88 bitrate= 125.4kbits/s speed=100x    
+size=    4608kB time=00:05:01.87 bitrate= 125.0kbits/s speed=100x    
+size=    5376kB time=00:05:53.49 bitrate= 124.6kbits/s speed= 101x    
+size=    6144kB time=00:06:42.36 bitrate= 125.1kbits/s speed=100x    
+size=    6912kB time=00:07:29.12 bitrate= 126.1kbits/s speed=99.6x    
+size=    7680kB time=00:08:19.98 bitrate= 125.8kbits/s speed=99.8x    
+size=    8448kB time=00:09:10.34 bitrate= 125.7kbits/s speed=99.8x    
+size=    9216kB time=00:10:03.01 bitrate= 125.2kbits/s speed=100x    
+size=    9984kB time=00:10:54.99 bitrate= 124.9kbits/s speed=100x    
+size=   11008kB time=00:11:46.45 bitrate= 127.6kbits/s speed= 101x    
+size=   11520kB time=00:12:33.13 bitrate= 125.3kbits/s speed=100x    
+size=   12288kB time=00:13:21.43 bitrate= 125.6kbits/s speed=99.8x    
+size=   13056kB time=00:14:10.83 bitrate= 125.7kbits/s speed=99.7x    
+size=   14080kB time=00:15:02.87 bitrate= 127.8kbits/s speed=99.9x    
+size=   14336kB time=00:15:29.09 bitrate= 126.4kbits/s speed=97.4x    
+size=   14592kB time=00:15:46.75 bitrate= 126.3kbits/s speed=94.3x    
+size=   15104kB time=00:16:06.89 bitrate= 128.0kbits/s speed=91.7x    
+size=   15360kB time=00:16:32.49 bitrate= 126.8kbits/s speed=89.8x    
+size=   15872kB time=00:16:56.13 bitrate= 128.0kbits/s speed=  88x    
+size=   16128kB time=00:17:25.42 bitrate= 126.4kbits/s speed=86.8x    
+size=   16640kB time=00:17:50.36 bitrate= 127.4kbits/s speed=85.3x    
+size=   16896kB time=00:18:17.40 bitrate= 126.1kbits/s speed=84.1x    
+size=   17408kB time=00:18:39.53 bitrate= 127.4kbits/s speed=82.6x    
+size=   17920kB time=00:19:09.33 bitrate= 127.7kbits/s speed=81.7x    
+size=   18176kB time=00:19:31.48 bitrate= 127.1kbits/s speed=80.5x    
+size=   18399kB time=00:19:37.47 bitrate= 128.0kbits/s speed=79.7x    
+video:0kB audio:18398kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.001837%
+
+[2025-11-27 17:36:12] [m4a] Conversion finished successfully.
+[2025-11-27 17:42:02] [m4a] Script called with argument: C:\Users\s.tabatabaei\Downloads\تله_ساخت_سفینه_فضاییمحققان_به_دوچرخه_نیاز_دارند.m4a
+[2025-11-27 17:42:02] [m4a] Starting conversion. Input='C:\Users\s.tabatabaei\Downloads\تله_ساخت_سفینه_فضاییمحققان_به_دوچرخه_نیاز_دارند.m4a' Output='C:\Users\s.tabatabaei\Downloads\تله_ساخت_سفینه_فضاییمحققان_به_دوچرخه_نیاز_دارند.mp3'
+[2025-11-27 17:42:02] [m4a] Running command: C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe -y -i C:\Users\s.tabatabaei\Downloads\تله_ساخت_سفینه_فضاییمحققان_به_دوچرخه_نیاز_دارند.m4a C:\Users\s.tabatabaei\Downloads\تله_ساخت_سفینه_فضاییمحققان_به_دوچرخه_نیاز_دارند.mp3
+[2025-11-27 17:42:23] [m4a] ffmpeg return code: 0
+[2025-11-27 17:42:23] [m4a] ffmpeg stderr:
+[2025-11-27 17:42:23] [m4a] ffmpeg version N-93397-gf8075b2c91 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 8.2.1 (GCC) 20190212
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 26.100 / 56. 26.100
+  libavcodec     58. 47.103 / 58. 47.103
+  libavformat    58. 26.101 / 58. 26.101
+  libavdevice    58.  6.101 / 58.  6.101
+  libavfilter     7. 48.100 /  7. 48.100
+  libswscale      5.  4.100 /  5.  4.100
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\Downloads\طھظ„ظ‡_ط³ط§ط®طھ_ط³ظپغŒظ†ظ‡_ظپط¶ط§غŒغŒظ…ط­ظ‚ظ‚ط§ظ†_ط¨ظ‡_ط¯ظˆع†ط±ط®ظ‡_ظ†غŒط§ط²_ط¯ط§ط±ظ†ط¯.m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2025-11-26T16:15:35.000000Z
+    encoder         : Google
+  Duration: 00:14:43.77, start: 0.000000, bitrate: 257 kb/s
+    Stream #0:0(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      creation_time   : 2025-11-26T16:15:35.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\Downloads\طھظ„ظ‡_ط³ط§ط®طھ_ط³ظپغŒظ†ظ‡_ظپط¶ط§غŒغŒظ…ط­ظ‚ظ‚ط§ظ†_ط¨ظ‡_ط¯ظˆع†ط±ط®ظ‡_ظ†غŒط§ط²_ط¯ط§ط±ظ†ط¯.mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf58.26.101
+    Stream #0:0(und): Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp (default)
+    Metadata:
+      creation_time   : 2025-11-26T16:15:35.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc58.47.103 libmp3lame
+size=     512kB time=00:00:47.54 bitrate=  88.2kbits/s speed=  94x    
+size=    1280kB time=00:01:35.89 bitrate= 109.3kbits/s speed=95.2x    
+size=    2048kB time=00:02:27.27 bitrate= 113.9kbits/s speed=97.2x    
+size=    2304kB time=00:02:43.42 bitrate= 115.5kbits/s speed=81.1x    
+size=    2816kB time=00:03:05.44 bitrate= 124.4kbits/s speed=73.7x    
+size=    3072kB time=00:03:21.77 bitrate= 124.7kbits/s speed=66.8x    
+size=    3328kB time=00:03:44.44 bitrate= 121.5kbits/s speed=63.7x    
+size=    3584kB time=00:03:58.60 bitrate= 123.0kbits/s speed=59.3x    
+size=    3840kB time=00:04:14.77 bitrate= 123.5kbits/s speed=56.2x    
+size=    4096kB time=00:04:34.10 bitrate= 122.4kbits/s speed=54.4x    
+size=    4608kB time=00:04:56.07 bitrate= 127.5kbits/s speed=53.5x    
+size=    4864kB time=00:05:12.00 bitrate= 127.7kbits/s speed=51.6x    
+size=    4864kB time=00:05:26.32 bitrate= 122.1kbits/s speed=49.8x    
+size=    5120kB time=00:05:42.91 bitrate= 122.3kbits/s speed=48.7x    
+size=    5632kB time=00:06:00.67 bitrate= 127.9kbits/s speed=47.8x    
+size=    5888kB time=00:06:17.99 bitrate= 127.6kbits/s speed=46.9x    
+size=    6144kB time=00:06:38.76 bitrate= 126.2kbits/s speed=46.6x    
+size=    6400kB time=00:07:02.92 bitrate= 124.0kbits/s speed=46.7x    
+size=    6656kB time=00:07:21.70 bitrate= 123.4kbits/s speed=46.2x    
+size=    6912kB time=00:07:37.92 bitrate= 123.7kbits/s speed=45.5x    
+size=    7424kB time=00:08:05.56 bitrate= 125.3kbits/s speed=45.9x    
+size=    7936kB time=00:08:34.61 bitrate= 126.3kbits/s speed=46.5x    
+size=    8448kB time=00:09:02.72 bitrate= 127.5kbits/s speed=46.9x    
+size=    8704kB time=00:09:31.03 bitrate= 124.9kbits/s speed=47.3x    
+size=    8960kB time=00:09:49.74 bitrate= 124.5kbits/s speed=46.9x    
+size=    9472kB time=00:10:13.66 bitrate= 126.4kbits/s speed=46.9x    
+size=    9728kB time=00:10:32.73 bitrate= 125.9kbits/s speed=46.6x    
+size=    9984kB time=00:10:45.06 bitrate= 126.8kbits/s speed=45.8x    
+size=   10496kB time=00:11:11.71 bitrate= 128.0kbits/s speed=46.1x    
+size=   10496kB time=00:11:27.38 bitrate= 125.1kbits/s speed=45.6x    
+size=   11008kB time=00:11:46.40 bitrate= 127.7kbits/s speed=45.3x    
+size=   11264kB time=00:12:02.52 bitrate= 127.7kbits/s speed=44.9x    
+size=   11520kB time=00:12:23.49 bitrate= 126.9kbits/s speed=44.8x    
+size=   11776kB time=00:12:35.51 bitrate= 127.7kbits/s speed=44.2x    
+size=   11776kB time=00:12:47.47 bitrate= 125.7kbits/s speed=43.6x    
+size=   12032kB time=00:12:57.66 bitrate= 126.7kbits/s speed=  43x    
+size=   12288kB time=00:13:18.69 bitrate= 126.0kbits/s speed=42.9x    
+size=   12544kB time=00:13:32.20 bitrate= 126.5kbits/s speed=42.5x    
+size=   12800kB time=00:13:52.88 bitrate= 125.9kbits/s speed=42.5x    
+size=   13056kB time=00:14:04.06 bitrate= 126.7kbits/s speed=  42x    
+size=   13568kB time=00:14:38.23 bitrate= 126.6kbits/s speed=42.6x    
+size=   13810kB time=00:14:43.77 bitrate= 128.0kbits/s speed=42.7x    
+video:0kB audio:13809kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.002447%
+
+[2025-11-27 17:42:23] [m4a] Conversion finished successfully.
