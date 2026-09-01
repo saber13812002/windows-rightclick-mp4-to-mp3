@@ -1,24 +1,29 @@
 import os
+import re
 import subprocess
 import sys
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, get_ffprobe, setup_context_menu_log
 
 
 def run(cmd):
     subprocess.run(cmd, check=True)
 
 
-def ffprobe_duration_seconds(input_path):
-    cmd = [
-        "ffprobe",
-        "-v", "error",
-        "-show_entries", "format=duration",
-        "-of", "default=noprint_wrappers=1:nokey=1",
-        "--",
-        input_path,
-    ]
-    result = subprocess.run(cmd, check=True, capture_output=True, text=True)
-    s = (result.stdout or "").strip()
-    return float(s)
+def media_duration_seconds(input_path):
+    """Get media duration in seconds using ffmpeg (ffprobe is not bundled)."""
+    cmd = [get_ffmpeg(), "-i", input_path]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    for line in (result.stderr or "").splitlines():
+        m = re.search(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)", line)
+        if m:
+            h, mi, s = m.groups()
+            return float(h) * 3600 + float(mi) * 60 + float(s)
+    raise RuntimeError(f"Could not determine duration of {input_path}")
 
 
 def format_hhmmss_mmm(seconds):
@@ -38,7 +43,7 @@ def split_midpoint_with_overlap(input_path):
         print(f"File not found: {input_path}")
         sys.exit(1)
 
-    duration = ffprobe_duration_seconds(input_path)
+    duration = media_duration_seconds(input_path)
     if duration <= 0:
         print("Media duration is zero or invalid.")
         sys.exit(1)
@@ -60,7 +65,7 @@ def split_midpoint_with_overlap(input_path):
 
     # Part 1: from 0 to midpoint
     cmd1 = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-y",
         "-hide_banner", "-loglevel", "error",
         "-i", input_path,
@@ -73,7 +78,7 @@ def split_midpoint_with_overlap(input_path):
 
     # Part 2: from (midpoint - 1s) to end
     cmd2 = [
-        "ffmpeg",
+        get_ffmpeg(),
         "-y",
         "-hide_banner", "-loglevel", "error",
         "-ss", ss2,
@@ -88,11 +93,10 @@ def split_midpoint_with_overlap(input_path):
 
 
 def main():
+    setup_context_menu_log()
     input_file = sys.argv[1]
     split_midpoint_with_overlap(input_file)
 
 
 if __name__ == "__main__":
     main()
-
-

@@ -1,14 +1,17 @@
-import shutil
 import subprocess
 import sys
-from pathlib import Path
-from datetime import datetime
 import traceback
+from datetime import datetime
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, setup_context_menu_log
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 LOG_FILE = BASE_DIR / "debug.log"
-FFMPEG_PATH = Path(r"C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe")
 
 
 def log(message: str) -> None:
@@ -22,7 +25,7 @@ def log(message: str) -> None:
 
 
 def show_error_box(message: str) -> None:
-    """Show a Windows message box so when you run from right‑click you see the error."""
+    """Show a Windows message box so when you run from right-click you see the error."""
     try:
         import ctypes
 
@@ -37,11 +40,11 @@ def convert_m4a_to_mp3(m4a_path: str) -> None:
     m4a = Path(m4a_path)
     mp3 = m4a.with_suffix(".mp3")
 
-    ffmpeg_executable = str(FFMPEG_PATH) if FFMPEG_PATH.exists() else shutil.which("ffmpeg")
+    ffmpeg_executable = get_ffmpeg()
     if not ffmpeg_executable:
         msg = (
-            "ffmpeg executable not found. Install ffmpeg or update FFMPEG_PATH "
-            f"in script (expected at {FFMPEG_PATH})."
+            "ffmpeg executable not found. Install ffmpeg, place ffmpeg/ffmpeg.exe "
+            "next to the project, or set the path in config.json."
         )
         log(msg)
         show_error_box(msg)
@@ -80,6 +83,8 @@ def convert_m4a_to_mp3(m4a_path: str) -> None:
 
 
 if __name__ == "__main__":
+    setup_context_menu_log()
+
     if len(sys.argv) < 2:
         show_error_box("No input file was passed to the script.")
         log("No input file in sys.argv")

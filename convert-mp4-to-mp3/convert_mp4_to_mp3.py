@@ -1,14 +1,17 @@
-import shutil
 import subprocess
 import sys
-from pathlib import Path
-from datetime import datetime
 import traceback
+from datetime import datetime
+from pathlib import Path
+
+_root = Path(__file__).resolve().parent.parent
+if str(_root) not in sys.path:
+    sys.path.insert(0, str(_root))
+from _ffmpeg_config import get_ffmpeg, setup_context_menu_log
 
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 LOG_FILE = BASE_DIR / "debug.log"
-FFMPEG_PATH = Path(r"C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe")
 
 
 def log(message: str) -> None:
@@ -18,12 +21,12 @@ def log(message: str) -> None:
         with LOG_FILE.open("a", encoding="utf-8") as f:
             f.write(f"[{datetime.now().isoformat(sep=' ', timespec='seconds')}] {message}\n")
     except Exception:
-        # اگر حتی لاگ‌نویسی هم خطا داد، نمی‌خواهیم اسکریپت کلاً بترکه
+        # If even logging fails, we don't want the whole script to crash.
         pass
 
 
 def show_error_box(message: str) -> None:
-    """Show a Windows message box so when you run from right‑click you see the error."""
+    """Show a Windows message box so when you run from right-click you see the error."""
     try:
         import ctypes
 
@@ -31,7 +34,7 @@ def show_error_box(message: str) -> None:
             0, str(message), "MP4 → MP3 error", 0x10  # MB_ICONHAND
         )
     except Exception:
-        # اگر به هر دلیل باکس پیغام کار نکرد، نادیده بگیر
+        # If the message box fails for any reason, ignore it.
         pass
 
 
@@ -39,11 +42,11 @@ def convert_mp4_to_mp3(mp4_path: str) -> None:
     mp4 = Path(mp4_path)
     mp3 = mp4.with_suffix(".mp3")
 
-    ffmpeg_executable = str(FFMPEG_PATH) if FFMPEG_PATH.exists() else shutil.which("ffmpeg")
+    ffmpeg_executable = get_ffmpeg()
     if not ffmpeg_executable:
         msg = (
-            "ffmpeg executable not found. Install ffmpeg or update FFMPEG_PATH "
-            f"in script (expected at {FFMPEG_PATH})."
+            "ffmpeg executable not found. Install ffmpeg, place ffmpeg/ffmpeg.exe "
+            "next to the project, or set the path in config.json."
         )
         log(msg)
         show_error_box(msg)
@@ -82,6 +85,8 @@ def convert_mp4_to_mp3(mp4_path: str) -> None:
 
 
 if __name__ == "__main__":
+    setup_context_menu_log()
+
     if len(sys.argv) < 2:
         show_error_box("No input file was passed to the script.")
         log("No input file in sys.argv")

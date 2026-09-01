@@ -4,34 +4,117 @@
 
 ![تبدیل MP4 به MP3](Screenshot%202025-03-27%20113902.png)
 
-## ساختار پروژه
+---
 
-این پروژه بر اساس اصول زیر طراحی شده است:
+## 🚀 نصب فوق‌العاده سریع (روی ویندوز خام)
 
-- **هر فیچر = یک هدف**: هر قابلیت به عنوان یک هدف مستقل در نظر گرفته می‌شود
-- **هر فیچر = یک فایل پایتون**: برای هر فیچر یک فایل پایتون جداگانه نوشته می‌شود که منطق اصلی را پیاده‌سازی می‌کند
-- **هر فیچر = یک فایل رجیستری**: برای هر فیچر یک فایل `.reg` ساخته می‌شود که با اجرای آن در ویندوز، گزینه مربوطه به منوی کلیک راست اضافه می‌شود
-- **هر فیچر = یک پوشه جداگانه**: هر فیچر در پوشه مخصوص به خودش با نام انگلیسی قرار دارد تا پروژه منظم و سازماندهی شده باشد
-- **ثبت در README**: هر فیچر جدید در فایل README اصلی پروژه ثبت و مستندسازی می‌شود
+**روی هر ویندوزی** — حتی بدون Python و FFmpeg — کار می‌کند.
 
-### ساختار پوشه‌ها
+### روش ۱: استفاده از EXEهای کامپایل شده (پیشنهادی)
+
+اگر فایل‌های آماده در پوشه [`dist/`](dist/) دارید:
+
+**۱.** روی [`install.bat`](install.bat) راست‌کلیک کنید → **Run as Administrator**
+
+**۲.** راست‌کلیک روی فایل‌های mp4/m4a/mp3 → همه گزینه‌ها در منو.
+
+> ✅ نیاز به Python یا FFmpeg جداگانه ندارد — همه چیز در EXEها و [`ffmpeg/`](ffmpeg/) باندل شده است.
+
+### روش ۲: ساخت EXEها در محل
+
+اگر کد منبع را clone کرده‌اید و می‌خواهید EXEها را خودتان بسازید:
+
+**۱.** روی [`build-exes.ps1`](build-exes.ps1) راست‌کلیک کنید → **Run with PowerShell**
+
+این اسکریپت:
+- PyInstaller را نصب می‌کند (یک بار)
+- همه اسکریپت‌های پایتون را به EXE کامپایل می‌کند → [`dist/`](dist/)
+- FFmpeg پرتابل را دانلود می‌کند → [`dist/ffmpeg/`](dist/ffmpeg/)
+- فایل‌های کمکی را کپی می‌کند
+
+**۲.** سپس روی [`dist/install.bat`](dist/install.bat) راست‌کلیک کنید → **Run as Administrator**
+
+**۳.** راست‌کلیک روی فایل‌ها → همه گزینه‌ها در منو.
+
+---
+
+## 📦 روش جایگزین (با Python سیستم)
+
+اگر Python 3 از قبل روی سیستم نصب است:
+
+```powershell
+# مرحله ۱: اجرای setup
+python setup.py
+
+# مرحله ۲: import رجیستری
+# (فایل register_all.reg باز می‌شود − Merge یا Allow را بزنید)
+```
+
+یا دابل‌کلیک کنید روی **`setup_win.bat`**
+
+---
+
+## 🗑️ حذف منوهای اضافه شده
+
+روی [`uninstall.bat`](uninstall.bat) راست‌کلیک کنید → **Run as Administrator** → تمام گزینه‌ها از منوی راست‌کلیک پاک می‌شوند.
+
+---
+
+## 📁 ساختار پروژه
 
 ```
-convert_mp4_to_mp3/
+windows-rightclick-mp4-to-mp3/
+│
+├── install.bat                       # نصاب یک‌کلیک (Admin)
+├── uninstall.bat                     # حذف‌کننده
+├── build-exes.ps1                    # [NEW] کامپایل EXE + دانلود FFmpeg
+├── download-deps.ps1                 # دانلود Python + FFmpeg پرتابل
+├── setup.py                          # [MODIFIED] تشخیص خودکار python/ffmpeg/EXE
+├── setup_win.bat                     # [MODIFIED] اولویت با EXE/python باندل شده
+├── _ffmpeg_config.py                 # [MODIFIED] تشخیص PyInstaller + ffmpeg باندل شده
+│
+├── dist/                             # [NEW] خروجی build-exes.ps1
+│   ├── install.bat
+│   ├── uninstall.bat
+│   ├── setup.exe
+│   ├── convert_mp4_to_mp3.exe
+│   ├── convert_m4a_to_mp3.exe
+│   ├── convert_to_ogg.exe
+│   ├── batch_convert.exe
+│   ├── split_middle_overlap.exe
+│   ├── remove_silence.exe
+│   ├── remove_long_silence.exe
+│   ├── split_on_silence.exe
+│   ├── config.json
+│   ├── register_all.reg
+│   ├── context_menu.log
+│   ├── ffmpeg/
+│   │   ├── ffmpeg.exe
+│   │   └── ffprobe.exe
+│   └── add-music-to-mp3/
+│       ├── add_music.bat             # [MODIFIED] استفاده از ffmpeg باندل شده
+│       └── *.mp3
+│
 ├── convert-mp4-to-mp3/
 │   ├── convert_mp4_to_mp3.py
 │   └── convert to mp3.reg
 ├── convert-m4a-to-mp3/
 │   ├── convert_m4a_to_mp3.py
 │   └── add_right_click_m4a.reg
+├── convert-to-ogg/
+│   └── convert_to_ogg.py
+├── batch-convert/
+│   └── batch_convert.py
 ├── split-mp4-middle/
-│   ├── split_middle_overlap.py
-│   └── add_right_click_split_middle_python.reg
+│   └── split_middle_overlap.py
 ├── split-mp3-middle/
 │   └── add_right_click_split_middle_python_mp3.reg
 ├── add-music-to-mp3/
 │   ├── add_music.bat
-│   └── add music.reg
+│   ├── add music.reg
+│   ├── start.mp3
+│   ├── middle.mp3
+│   └── finish.mp3
 ├── remove-silence-mp3/
 │   ├── remove_silence.py
 │   └── remove_silence.reg
@@ -43,248 +126,67 @@ convert_mp4_to_mp3/
     └── split_on_silence.reg
 ```
 
-**نکته**: فیچر `split-mp3-middle` از همان فایل پایتون `split_middle_overlap.py` در پوشه `split-mp4-middle` استفاده می‌کند.
+---
 
-## پیش‌نیازها
+## ✨ فیچرهای موجود
 
-- نصب **Python 3** (پایتون 3.13 یا بالاتر)
-- نصب **FFmpeg** (شامل `ffmpeg` و `ffprobe`) و اضافه بودن به PATH سیستم
-- سیستم عامل **Windows**
+### فایل → راست‌کلیک
 
-## نصب سریع (پیشنهادی)
+| فیچر | پسوند | توضیح |
+|------|-------|-------|
+| **Convert to MP3** | `.mp4`, `.m4a` | تبدیل به MP3 |
+| **Convert to OGG 48kHz** | `.mp4`, `.m4a`, `.mkv`, `.avi`, `.webm`, `.mov` | تبدیل به OGG (مناسب پیام‌رسان) |
+| **Split midpoint (1s overlap)** | `.mp4`, `.mp3` | تقسیم از وسط با ۱ ثانیه هم‌پوشانی |
+| **Add Custom Music** | `.mp3` | اضافه کردن start/middle/finish به MP3 |
+| **Remove Silence (2s+)** | `.mp3` | حذف سکوت‌های ۲+ ثانیه |
+| **Remove Long Silence (5s+)** | `.mp3` | حذف سکوت‌های طولانی ۵+ ثانیه |
+| **Split on Silence (2s+)** | `.mp3` | تقسیم بر اساس سکوت‌های ۲+ ثانیه |
 
-برای اینکه تمام فایل‌های رجیستری با مسیر صحیح سیستم شما ساخته شوند، اسکریپت `generate-installers.ps1` را اجرا کنید:
+### پوشه → راست‌کلیک (Batch)
+
+| فیچر | توضیح |
+|------|-------|
+| **Convert all in folder to MP3** | تبدیل همه فایل‌های پوشه به MP3 |
+| **Convert all in folder to OGG 48kHz** | تبدیل همه به OGG |
+| **Split midpoint for all in folder** | تقسیم همه از وسط |
+| **Remove silence for all in folder** | حذف سکوت همه |
+| **Remove long silence for all in folder** | حذف سکوت‌های طولانی همه |
+| **Split on silence for all in folder** | تقسیم همه بر اساس سکوت |
+
+> فایل‌هایی که خروجی‌شان از قبل ساخته شده، **رد** می‌شوند (بدون سؤال).
+
+---
+
+## 🔧 توسعه
+
+### پیش‌نیازهای ساخت (Build)
+
+- **Python 3.11+** (فقط برای ماشین توسعه‌دهنده)
+- **pip** (برای نصب PyInstaller)
+- اینترنت (برای دانلود FFmpeg)
+
+### ساخت نسخه پرتابل
 
 ```powershell
-pwsh -ExecutionPolicy Bypass -File .\generate-installers.ps1
+.\build-exes.ps1
 ```
 
-این اسکریپت:
+خروجی در [`dist/`](dist/) — می‌توانید کل پوشه را Zip کنید و به هر سیستم ویندوزی ببرید.
 
-- به صورت خودکار مسیر ریشه پروژه و فایل‌های پایتون/بت را پیدا می‌کند.
-- مسیر دقیق Python را (با استفاده از `py`, `python`, `python3`) کشف می‌کند و در صورت پیدا نشدن از شما می‌خواهد مسیر را وارد کنید.
-- برای هر فیچر، فایل `.reg` مربوطه را با مسیر صحیح ایجاد/به‌روزرسانی می‌کند.
-- یک فایل اصلی به نام `install-all-tools.reg` می‌سازد که با اجرای آن تمام گزینه‌های منوی کلیک راست ثبت می‌شوند.
+### نکات توسعه
 
-بعد از اجرای اسکریپت می‌توانید یکی از دو روش زیر را انتخاب کنید:
-
-1. اجرای فایل `install-all-tools.reg` برای نصب همه فیچرها با هم.
-2. اجرای فایل رجیستری هر پوشه به صورت تکی (همه فایل‌ها همین حالا با مسیرهای درست تولید شده‌اند).
-
-> اگر با پیغام «Python پیدا نشد» مواجه شدید، کافی است مسیر `python.exe` نصب‌شده روی سیستم را وارد کنید (مثلاً `C:\Users\<user>\AppData\Local\Programs\Python\Python313\python.exe`).
-
-## فیچرهای موجود
-
-### 1. تبدیل MP4 به MP3
-
-**پوشه**: `convert-mp4-to-mp3/`  
-**فایل پایتون**: `convert-mp4-to-mp3/convert_mp4_to_mp3.py`  
-**فایل رجیستری**: `convert-mp4-to-mp3/convert to mp3.reg`
-
-تبدیل فایل‌های ویدیویی MP4 به فایل‌های صوتی MP3.
-
-**نحوه استفاده**:
-1. فایل `convert-mp4-to-mp3/convert to mp3.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp4` راست‌کلیک کنید
-3. گزینه "Convert to MP3" را انتخاب کنید
-4. فایل MP3 در همان مسیر فایل اصلی ساخته می‌شود
+- هر فیچر جدید = یک فایل پایتون + یک پوشه مجزا
+- اسکریپت‌ها از `_ffmpeg_config.py` برای یافتن ffmpeg استفاده می‌کنند
+- هنگام ساخت EXE با PyInstaller، `_project_root()` مسیر EXE را برمی‌گرداند
+- فایل `config.json` در کنار EXEها قرار می‌گیرد
 
 ---
 
-### 2. تبدیل M4A به MP3
+## 📝 یادداشت‌ها
 
-**پوشه**: `convert-m4a-to-mp3/`  
-**فایل پایتون**: `convert-m4a-to-mp3/convert_m4a_to_mp3.py`  
-**فایل رجیستری**: `convert-m4a-to-mp3/add_right_click_m4a.reg`
+- **نسخه:** v{VERSION} (در [`_ffmpeg_config.py`](_ffmpeg_config.py))
+- **لاگ:** هر اجرا در `context_menu.log` ثبت می‌شود
+- **رجیستری:** `register_all.reg` توسط `setup.py` ساخته می‌شود
+- **سازگاری:** Windows 10 / 11
 
-تبدیل فایل‌های صوتی M4A به فرمت MP3.
-
-**نحوه استفاده**:
-1. فایل `convert-m4a-to-mp3/add_right_click_m4a.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.m4a` راست‌کلیک کنید
-3. گزینه "Convert to MP3" را انتخاب کنید
-4. فایل MP3 در همان مسیر فایل اصلی ساخته می‌شود
-
----
-
-### 3. تقسیم ویدیو از وسط با هم‌پوشانی (MP4)
-
-**پوشه**: `split-mp4-middle/`  
-**فایل پایتون**: `split-mp4-middle/split_middle_overlap.py`  
-**فایل رجیستری**: `split-mp4-middle/add_right_click_split_middle_python.reg`
-
-تقسیم فایل‌های ویدیویی MP4 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای. فایل به دو قسمت تقسیم می‌شود که قسمت دوم از 1 ثانیه قبل از نقطه میانی شروع می‌شود.
-
-**نحوه استفاده**:
-1. فایل `split-mp4-middle/add_right_click_split_middle_python.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp4` راست‌کلیک کنید
-3. گزینه "Split midpoint (1s overlap)" را انتخاب کنید
-4. دو فایل خروجی ساخته می‌شوند: `<name>_part1.mp4` و `<name>_part2.mp4`
-
----
-
-### 4. تقسیم فایل صوتی از وسط با هم‌پوشانی (MP3)
-
-**پوشه**: `split-mp3-middle/`  
-**فایل پایتون**: `split-mp4-middle/split_middle_overlap.py` (اشتراک‌گذاری شده با فیچر قبلی)  
-**فایل رجیستری**: `split-mp3-middle/add_right_click_split_middle_python_mp3.reg`
-
-تقسیم فایل‌های صوتی MP3 از نقطه میانی با هم‌پوشانی 1 ثانیه‌ای. همان منطق فیچر قبلی اما برای فایل‌های MP3.
-
-**نحوه استفاده**:
-1. فایل `split-mp3-middle/add_right_click_split_middle_python_mp3.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp3` راست‌کلیک کنید
-3. گزینه "Split midpoint (1s overlap)" را انتخاب کنید
-4. دو فایل خروجی ساخته می‌شوند: `<name>_part1.mp3` و `<name>_part2.mp3`
-
----
-
-### 5. اضافه کردن موزیک به فایل‌های MP3
-
-**پوشه**: `add-music-to-mp3/`  
-**فایل Batch**: `add-music-to-mp3/add_music.bat`  
-**فایل رجیستری**: `add-music-to-mp3/add music.reg`
-
-اضافه کردن فایل‌های موزیک ثابت (start.mp3، middle.mp3، finish.mp3) به ابتدا، وسط و انتهای فایل‌های MP3 موجود در پوشه. فایل اصلی از وسط تقسیم می‌شود و موزیک‌ها در بین قسمت‌ها قرار می‌گیرند.
-
-**نحوه استفاده**:
-1. فایل‌های `start.mp3`، `middle.mp3` و `finish.mp3` را در پوشه پروژه قرار دهید
-2. فایل `add-music-to-mp3/add music.reg` را اجرا کنید و Allow بزنید
-3. روی هر فایل `.mp3` راست‌کلیک کنید
-4. گزینه "Add Custom Music" را انتخاب کنید
-5. فایل خروجی با نام `output_<name>.mp3` ساخته می‌شود
-
-**نکته**: این فیچر تمام فایل‌های MP3 موجود در پوشه فعلی را پردازش می‌کند (به جز فایل‌های start.mp3، middle.mp3 و finish.mp3).
-
----
-
-### 6. حذف سکوت از فایل‌های MP3
-
-**پوشه**: `remove-silence-mp3/`  
-**فایل پایتون**: `remove-silence-mp3/remove_silence.py`  
-**فایل رجیستری**: `remove-silence-mp3/remove_silence.reg`
-
-حذف خودکار بخش‌های سکوت 2 ثانیه‌ای یا بیشتر از فایل‌های صوتی MP3. این فیچر برای فایل‌های طولانی (مثلاً 1-2 ساعته) که دارای سکوت‌های متعدد هستند بسیار مفید است.
-
-**نحوه کار**:
-- از FFmpeg برای تشخیص بخش‌های سکوت استفاده می‌کند
-- بخش‌های غیر سکوت را استخراج و به هم می‌چسباند
-- فایل خروجی با پسوند `_no_silence` ساخته می‌شود
-
-**نحوه استفاده**:
-1. فایل `remove-silence-mp3/remove_silence.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp3` راست‌کلیک کنید
-3. گزینه "Remove Silence (2s+)" را انتخاب کنید
-4. پردازش شروع می‌شود و فایل خروجی با نام `<name>_no_silence.mp3` ساخته می‌شود
-
-**نکات**:
-- پردازش فایل‌های طولانی ممکن است چند دقیقه زمان ببرد
-- فایل اصلی بدون تغییر باقی می‌ماند
-- می‌توانید مدت سکوت را با اجرای دستی اسکریپت تغییر دهید (پیش‌فرض: 2 ثانیه)
-
----
-
-### 7. حذف سکوت‌های طولانی از فایل‌های MP3
-
-**پوشه**: `remove-long-silence-mp3/`  
-**فایل پایتون**: `remove-long-silence-mp3/remove_long_silence.py`  
-**فایل رجیستری**: `remove-long-silence-mp3/remove_long_silence.reg`
-
-حذف خودکار بخش‌های سکوت طولانی (5 ثانیه‌ای یا بیشتر) از فایل‌های صوتی MP3. این فیچر برای فایل‌های طولانی که دارای سکوت‌های طولانی (مثلاً یک دقیقه کامل یا بیشتر) هستند طراحی شده است.
-
-**تفاوت با فیچر قبلی**:
-- فیچر قبلی (`remove-silence-mp3`) برای سکوت‌های کوتاه (2 ثانیه یا بیشتر) است
-- این فیچر برای سکوت‌های طولانی (5 ثانیه یا بیشتر) است
-- مناسب برای فایل‌هایی که دارای سکوت‌های طولانی مثل یک دقیقه کامل هستند
-
-**نحوه کار**:
-- از FFmpeg برای تشخیص بخش‌های سکوت طولانی استفاده می‌کند
-- بخش‌های غیر سکوت را استخراج و به هم می‌چسباند
-- آمار دقیق از مدت زمان سکوت‌های حذف شده ارائه می‌دهد
-- فایل خروجی با پسوند `_no_long_silence` ساخته می‌شود
-
-**نحوه استفاده**:
-1. فایل `remove-long-silence-mp3/remove_long_silence.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp3` راست‌کلیک کنید
-3. گزینه "Remove Long Silence (5s+)" را انتخاب کنید
-4. پردازش شروع می‌شود و فایل خروجی با نام `<name>_no_long_silence.mp3` ساخته می‌شود
-
-**نکات**:
-- پردازش فایل‌های طولانی ممکن است چند دقیقه زمان ببرد
-- فایل اصلی بدون تغییر باقی می‌ماند
-- آمار دقیق از زمان صرفه‌جویی شده نمایش داده می‌شود
-- می‌توانید مدت سکوت را با اجرای دستی اسکریپت تغییر دهید (پیش‌فرض: 5 ثانیه)
-
----
-
-### 8. تقسیم موسیقی بر اساس سکوت
-
-**پوشه**: `split-on-silence-mp3/`  
-**فایل پایتون**: `split-on-silence-mp3/split_on_silence.py`  
-**فایل رجیستری**: `split-on-silence-mp3/split_on_silence.reg`
-
-تقسیم فایل صوتی MP3 به قطعات جداگانه بر اساس سکوت‌های 2 ثانیه‌ای یا بیشتر. هر قطعه به عنوان یک فایل جداگانه در یک پوشه ذخیره می‌شود.
-
-**تفاوت با فیچرهای قبلی**:
-- فیچرهای `remove-silence-mp3` و `remove-long-silence-mp3`: سکوت‌ها را حذف می‌کنند و یک فایل واحد می‌سازند
-- این فیچر: موسیقی را به قطعات جداگانه تقسیم می‌کند و هر قطعه را در فایل جداگانه ذخیره می‌کند
-
-**نحوه کار**:
-- از FFmpeg برای تشخیص بخش‌های سکوت 2 ثانیه‌ای یا بیشتر استفاده می‌کند
-- بخش‌های غیر سکوت را به عنوان قطعات جداگانه استخراج می‌کند
-- هر قطعه در پوشه `<name>_parts` با نام `part_001.mp3`, `part_002.mp3` و... ذخیره می‌شود
-
-**نحوه استفاده**:
-1. فایل `split-on-silence-mp3/split_on_silence.reg` را اجرا کنید و Allow بزنید
-2. روی هر فایل `.mp3` راست‌کلیک کنید
-3. گزینه "Split on Silence (2s+)" را انتخاب کنید
-4. پردازش شروع می‌شود و یک پوشه با نام `<name>_parts` ساخته می‌شود
-5. تمام قطعات در این پوشه ذخیره می‌شوند
-
-**نکات**:
-- پردازش فایل‌های طولانی ممکن است چند دقیقه زمان ببرد
-- فایل اصلی بدون تغییر باقی می‌ماند
-- تمام قطعات در یک پوشه جداگانه ذخیره می‌شوند
-- می‌توانید مدت سکوت را با اجرای دستی اسکریپت تغییر دهید (پیش‌فرض: 2 ثانیه)
-- مناسب برای تقسیم فایل‌های طولانی به قطعات کوچکتر بر اساس سکوت
-
----
-
-## نحوه نصب
-
-1. تمام فایل‌های پروژه را دانلود کنید
-2. برای هر فیچری که می‌خواهید استفاده کنید، فایل `.reg` مربوطه را اجرا کنید
-3. در پنجره UAC که باز می‌شود، "Yes" یا "Allow" را بزنید
-4. حالا گزینه‌های مربوطه در منوی کلیک راست فایل‌های مربوطه ظاهر می‌شوند
-
-## نحوه حذف منوهای اضافه شده
-
-برای حذف گزینه‌های اضافه شده از منوی کلیک راست، می‌توانید از Registry Editor استفاده کنید یا فایل‌های رجیستری را به صورت دستی ویرایش کنید.
-
-## اجرای دستی اسکریپت‌ها
-
-همه اسکریپت‌های پایتون را می‌توان به صورت دستی نیز اجرا کرد:
-
-```bash
-python convert-mp4-to-mp3/convert_mp4_to_mp3.py "path\to\file.mp4"
-python convert-m4a-to-mp3/convert_m4a_to_mp3.py "path\to\file.m4a"
-python split-mp4-middle/split_middle_overlap.py "path\to\file.mp4"
-python remove-silence-mp3/remove_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python remove-silence-mp3/remove_silence.py "path\to\file.mp3" 3.0
-python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python remove-long-silence-mp3/remove_long_silence.py "path\to\file.mp3" 10.0
-python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3"
-# یا با مدت سکوت سفارشی:
-python split-on-silence-mp3/split_on_silence.py "path\to\file.mp3" 3.0
-```
-
-## یادداشت توسعه
-
-- هر فیچر جدید باید شامل یک فایل پایتون و یک فایل رجیستری باشد
-- هر فیچر باید در پوشه جداگانه با نام انگلیسی قرار بگیرد
-- نام پوشه‌ها باید واضح و توصیفی باشند (استفاده از خط تیره برای جدا کردن کلمات)
-- نام فایل‌ها باید واضح و توصیفی باشند
-- هر فیچر جدید باید در این README مستندسازی شود
-- هنگام ساخت فایل رجیستری جدید، مسیر فایل پایتون باید به مسیر کامل در پوشه مربوطه اشاره کند
+برای اطلاعات بیشتر به [SETUP.md](SETUP.md) و [IMPLEMENTATION.md](IMPLEMENTATION.md) مراجعه کنید.
