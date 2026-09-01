@@ -1,7 +1,25 @@
 Windows Registry Editor Version 5.00
 
-[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\Convert to MP3]
-@="Convert to MP3"
+; Remove previous entries so the right-click menu stays clean.
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\Convert to MP3]
+[-HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4AToMP3]
 
-[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\Convert to MP3\command]
-@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"C:\\Users\\s.tabatabaei\\Documents\\saberprojects\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\""
+; --- M4A -> MP3: three separate top-level entries (reliable in classic and Windows 11 menus) ---
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4AHigh]
+@="Convert to MP3 - High (320 kbps)"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4AHigh\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" high"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4AMedium]
+@="Convert to MP3 - Medium (192 kbps)"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4AMedium\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" medium"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4ALow]
+@="Convert to MP3 - Low (128 kbps)"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4ALow\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" low"

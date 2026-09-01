@@ -196,3 +196,481 @@ size=   13810kB time=00:14:43.77 bitrate= 128.0kbits/s speed=42.7x
 video:0kB audio:13809kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.002447%
 
 [2025-11-27 17:42:23] [m4a] Conversion finished successfully.
+[2026-09-01 20:58:52] [m4a] Script called with argument: D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a (quality: low)
+[2026-09-01 20:58:52] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a' Output='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3'
+[2026-09-01 20:58:52] [m4a] Running command: ffmpeg -y -i D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a -c:a libmp3lame -b:a 128k D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3
+[2026-09-01 20:58:52] [m4a] Exception during conversion:
+[2026-09-01 20:58:52] [m4a] Script called with argument: D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 20:58:52] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a' Output='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 20:58:52] [m4a] Running command: ffmpeg -y -i D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 20:58:52] [m4a] Exception during conversion:
+[2026-09-01 20:58:52] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 20:58:52] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 20:58:52] [m4a] Script called with argument: D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 20:58:52] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a' Output='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 20:58:52] [m4a] Running command: ffmpeg -y -i D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 20:58:52] [m4a] Exception during conversion:
+[2026-09-01 20:58:52] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 20:59:08] [m4a] Script called with argument: D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 20:59:08] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a' Output='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 20:59:08] [m4a] Running command: ffmpeg -y -i D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 20:59:08] [m4a] Exception during conversion:
+[2026-09-01 20:59:08] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 20:59:08] [m4a] Script called with argument: D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 20:59:08] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a' Output='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 20:59:08] [m4a] Running command: ffmpeg -y -i D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 20:59:08] [m4a] Exception during conversion:
+[2026-09-01 20:59:08] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 20:59:09] [m4a] Script called with argument: D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a (quality: low)
+[2026-09-01 20:59:09] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a' Output='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3'
+[2026-09-01 20:59:09] [m4a] Running command: ffmpeg -y -i D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a -c:a libmp3lame -b:a 128k D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3
+[2026-09-01 20:59:09] [m4a] Exception during conversion:
+[2026-09-01 20:59:09] [m4a] Traceback (most recent call last):
+  File "D:\saberprojects-d\windows-rightclick-mp4-to-mp3\convert-m4a-to-mp3\convert_m4a_to_mp3.py", line 87, in convert_m4a_to_mp3
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+    )
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 554, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1038, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        pass_fds, cwd, env,
+                        ^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+                        gid, gids, uid, umask,
+                        ^^^^^^^^^^^^^^^^^^^^^^
+                        start_new_session, process_group)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\s.tabatabaei\AppData\Local\Python\pythoncore-3.14-64\Lib\subprocess.py", line 1552, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+                             # no special security
+                             ^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+                             cwd,
+                             ^^^^
+                             startupinfo)
+                             ^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2026-09-01 21:04:12] [m4a] Script called with argument: D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 21:04:12] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a' Output='D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 21:04:12] [m4a] Running command: C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe -y -i D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\چالش_های_فنی_و_زیرساختی_مهندسی_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 21:04:13] [m4a] Script called with argument: D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a (quality: low)
+[2026-09-01 21:04:13] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a' Output='D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3'
+[2026-09-01 21:04:13] [m4a] Running command: C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe -y -i D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید.m4a -c:a libmp3lame -b:a 128k D:\documents\چرا_هوش_مصنوعی_با_اطمینان_دروغ_می_گوید (128kbps).mp3
+[2026-09-01 21:04:13] [m4a] Script called with argument: D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a (quality: low)
+[2026-09-01 21:04:13] [m4a] Starting conversion. Quality='low' (Low (128 kbps)) Input='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a' Output='D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3'
+[2026-09-01 21:04:13] [m4a] Running command: C:\Program Files (x86)\FastPCTools\Fast Screen Recorder\ffmpeg.exe -y -i D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی.m4a -c:a libmp3lame -b:a 128k D:\documents\معماری_ترنسفورمر_و_محدودیت_های_هوش_مصنوعی (128kbps).mp3
+[2026-09-01 21:04:33] [m4a] ffmpeg return code: 0
+[2026-09-01 21:04:33] [m4a] ffmpeg stderr:
+[2026-09-01 21:04:33] [m4a] ffmpeg version N-93397-gf8075b2c91 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 8.2.1 (GCC) 20190212
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 26.100 / 56. 26.100
+  libavcodec     58. 47.103 / 58. 47.103
+  libavformat    58. 26.101 / 58. 26.101
+  libavdevice    58.  6.101 / 58.  6.101
+  libavfilter     7. 48.100 /  7. 48.100
+  libswscale      5.  4.100 /  5.  4.100
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\documents\ع†ط§ظ„ط´_ظ‡ط§غŒ_ظپظ†غŒ_ظˆ_ط²غŒط±ط³ط§ط®طھغŒ_ظ…ظ‡ظ†ط¯ط³غŒ_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ.m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2026-09-01T16:30:43.000000Z
+    encoder         : Google
+  Duration: 00:27:56.13, start: 0.000000, bitrate: 257 kb/s
+    Stream #0:0(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 1 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:30:43.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'D:\documents\ع†ط§ظ„ط´_ظ‡ط§غŒ_ظپظ†غŒ_ظˆ_ط²غŒط±ط³ط§ط®طھغŒ_ظ…ظ‡ظ†ط¯ط³غŒ_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ (128kbps).mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf58.26.101
+    Stream #0:0(und): Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:30:43.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc58.47.103 libmp3lame
+size=     512kB time=00:00:40.15 bitrate= 104.5kbits/s speed=80.2x    
+size=    1280kB time=00:01:25.97 bitrate= 122.0kbits/s speed=85.9x    
+size=    2048kB time=00:02:13.06 bitrate= 126.1kbits/s speed=88.6x    
+size=    2560kB time=00:02:59.82 bitrate= 116.6kbits/s speed=89.8x    
+size=    3328kB time=00:03:47.26 bitrate= 120.0kbits/s speed=90.8x    
+size=    4096kB time=00:04:33.03 bitrate= 122.9kbits/s speed=90.9x    
+size=    4864kB time=00:05:15.42 bitrate= 126.3kbits/s speed=90.1x    
+size=    5376kB time=00:05:56.10 bitrate= 123.7kbits/s speed=  89x    
+size=    6144kB time=00:06:37.66 bitrate= 126.6kbits/s speed=88.3x    
+size=    6656kB time=00:07:16.66 bitrate= 124.9kbits/s speed=87.2x    
+size=    7424kB time=00:07:58.38 bitrate= 127.1kbits/s speed=86.9x    
+size=    7936kB time=00:08:39.21 bitrate= 125.2kbits/s speed=86.4x    
+size=    8448kB time=00:09:15.31 bitrate= 124.6kbits/s speed=85.3x    
+size=    9216kB time=00:09:55.82 bitrate= 126.7kbits/s speed=  85x    
+size=    9728kB time=00:10:33.20 bitrate= 125.9kbits/s speed=84.3x    
+size=   10240kB time=00:11:10.85 bitrate= 125.0kbits/s speed=83.8x    
+size=   11008kB time=00:11:49.12 bitrate= 127.2kbits/s speed=83.3x    
+size=   11520kB time=00:12:28.93 bitrate= 126.0kbits/s speed=83.1x    
+size=   12288kB time=00:13:10.15 bitrate= 127.4kbits/s speed=83.1x    
+size=   12800kB time=00:13:50.38 bitrate= 126.3kbits/s speed=82.9x    
+size=   13568kB time=00:14:32.12 bitrate= 127.4kbits/s speed=  83x    
+size=   14080kB time=00:15:11.41 bitrate= 126.6kbits/s speed=82.8x    
+size=   14848kB time=00:15:53.83 bitrate= 127.5kbits/s speed=82.9x    
+size=   15360kB time=00:16:34.43 bitrate= 126.5kbits/s speed=82.8x    
+size=   16128kB time=00:17:15.99 bitrate= 127.5kbits/s speed=82.8x    
+size=   16640kB time=00:17:55.25 bitrate= 126.8kbits/s speed=82.6x    
+size=   17408kB time=00:18:35.76 bitrate= 127.8kbits/s speed=82.6x    
+size=   17920kB time=00:19:18.89 bitrate= 126.7kbits/s speed=82.7x    
+size=   18688kB time=00:20:00.58 bitrate= 127.5kbits/s speed=82.7x    
+size=   19200kB time=00:20:42.01 bitrate= 126.6kbits/s speed=82.7x    
+size=   19968kB time=00:21:23.50 bitrate= 127.4kbits/s speed=82.7x    
+size=   20480kB time=00:22:05.24 bitrate= 126.6kbits/s speed=82.7x    
+size=   21248kB time=00:22:47.64 bitrate= 127.3kbits/s speed=82.8x    
+size=   22016kB time=00:23:35.05 bitrate= 127.5kbits/s speed=83.1x    
+size=   22784kB time=00:24:24.76 bitrate= 127.4kbits/s speed=83.6x    
+size=   23552kB time=00:25:15.20 bitrate= 127.3kbits/s speed=84.1x    
+size=   24320kB time=00:26:03.06 bitrate= 127.5kbits/s speed=84.4x    
+size=   25088kB time=00:26:53.63 bitrate= 127.4kbits/s speed=84.8x    
+size=   25856kB time=00:27:43.08 bitrate= 127.4kbits/s speed=85.2x    
+size=   26191kB time=00:27:56.14 bitrate= 128.0kbits/s speed=85.3x    
+video:0kB audio:26190kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.002069%
+
+[2026-09-01 21:04:33] [m4a] Conversion finished successfully.
+[2026-09-01 21:04:33] [m4a] ffmpeg return code: 0
+[2026-09-01 21:04:33] [m4a] ffmpeg stderr:
+[2026-09-01 21:04:33] [m4a] ffmpeg version N-93397-gf8075b2c91 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 8.2.1 (GCC) 20190212
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 26.100 / 56. 26.100
+  libavcodec     58. 47.103 / 58. 47.103
+  libavformat    58. 26.101 / 58. 26.101
+  libavdevice    58.  6.101 / 58.  6.101
+  libavfilter     7. 48.100 /  7. 48.100
+  libswscale      5.  4.100 /  5.  4.100
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\documents\ع†ط±ط§_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ_ط¨ط§_ط§ط·ظ…غŒظ†ط§ظ†_ط¯ط±ظˆط؛_ظ…غŒ_ع¯ظˆغŒط¯.m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2026-09-01T16:33:38.000000Z
+    encoder         : Google
+  Duration: 00:27:31.45, start: 0.000000, bitrate: 257 kb/s
+    Stream #0:0(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 1 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:33:38.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'D:\documents\ع†ط±ط§_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ_ط¨ط§_ط§ط·ظ…غŒظ†ط§ظ†_ط¯ط±ظˆط؛_ظ…غŒ_ع¯ظˆغŒط¯ (128kbps).mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf58.26.101
+    Stream #0:0(und): Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:33:38.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc58.47.103 libmp3lame
+size=     512kB time=00:00:43.05 bitrate=  97.4kbits/s speed=  86x    
+size=    1280kB time=00:01:31.22 bitrate= 114.9kbits/s speed=91.1x    
+size=    2048kB time=00:02:18.55 bitrate= 121.1kbits/s speed=92.3x    
+size=    2816kB time=00:03:05.99 bitrate= 124.0kbits/s speed=92.9x    
+size=    3584kB time=00:03:51.00 bitrate= 127.1kbits/s speed=92.3x    
+size=    4096kB time=00:04:35.61 bitrate= 121.7kbits/s speed=91.8x    
+size=    4864kB time=00:05:17.59 bitrate= 125.5kbits/s speed=90.7x    
+size=    5376kB time=00:05:58.00 bitrate= 123.0kbits/s speed=89.4x    
+size=    6144kB time=00:06:37.79 bitrate= 126.5kbits/s speed=88.3x    
+size=    6656kB time=00:07:18.20 bitrate= 124.4kbits/s speed=87.6x    
+size=    7424kB time=00:07:59.79 bitrate= 126.8kbits/s speed=87.1x    
+size=    7936kB time=00:08:41.58 bitrate= 124.6kbits/s speed=86.8x    
+size=    8704kB time=00:09:19.67 bitrate= 127.4kbits/s speed=  86x    
+size=    9216kB time=00:09:58.25 bitrate= 126.2kbits/s speed=85.4x    
+size=    9728kB time=00:10:36.50 bitrate= 125.2kbits/s speed=84.8x    
+size=   10496kB time=00:11:14.66 bitrate= 127.4kbits/s speed=84.2x    
+size=   11008kB time=00:11:51.41 bitrate= 126.8kbits/s speed=83.6x    
+size=   11520kB time=00:12:32.48 bitrate= 125.4kbits/s speed=83.5x    
+size=   12288kB time=00:13:12.68 bitrate= 127.0kbits/s speed=83.4x    
+size=   12800kB time=00:13:55.18 bitrate= 125.5kbits/s speed=83.4x    
+size=   13568kB time=00:14:36.30 bitrate= 126.8kbits/s speed=83.4x    
+size=   14080kB time=00:15:13.97 bitrate= 126.2kbits/s speed=  83x    
+size=   14848kB time=00:15:56.10 bitrate= 127.2kbits/s speed=83.1x    
+size=   15360kB time=00:16:36.25 bitrate= 126.3kbits/s speed=82.9x    
+size=   16128kB time=00:17:14.94 bitrate= 127.7kbits/s speed=82.7x    
+size=   16640kB time=00:17:56.42 bitrate= 126.6kbits/s speed=82.7x    
+size=   17152kB time=00:18:33.73 bitrate= 126.2kbits/s speed=82.4x    
+size=   17920kB time=00:19:14.92 bitrate= 127.1kbits/s speed=82.4x    
+size=   18688kB time=00:20:00.19 bitrate= 127.6kbits/s speed=82.7x    
+size=   19456kB time=00:20:48.73 bitrate= 127.6kbits/s speed=83.2x    
+size=   20224kB time=00:21:35.83 bitrate= 127.9kbits/s speed=83.5x    
+size=   20992kB time=00:22:25.35 bitrate= 127.8kbits/s speed=  84x    
+size=   21504kB time=00:23:07.10 bitrate= 127.0kbits/s speed=  84x    
+size=   22272kB time=00:23:48.06 bitrate= 127.8kbits/s speed=83.9x    
+size=   22784kB time=00:24:31.08 bitrate= 126.9kbits/s speed=  84x    
+size=   23552kB time=00:25:13.90 bitrate= 127.4kbits/s speed=  84x    
+size=   24064kB time=00:25:53.84 bitrate= 126.9kbits/s speed=83.9x    
+size=   24832kB time=00:26:34.77 bitrate= 127.6kbits/s speed=83.8x    
+size=   25344kB time=00:27:18.13 bitrate= 126.7kbits/s speed=83.9x    
+size=   25805kB time=00:27:31.46 bitrate= 128.0kbits/s speed=  84x    
+video:0kB audio:25804kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.002100%
+
+[2026-09-01 21:04:33] [m4a] Conversion finished successfully.
+[2026-09-01 21:04:36] [m4a] ffmpeg return code: 0
+[2026-09-01 21:04:36] [m4a] ffmpeg stderr:
+[2026-09-01 21:04:36] [m4a] ffmpeg version N-93397-gf8075b2c91 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 8.2.1 (GCC) 20190212
+  configuration: --enable-gpl --enable-version3 --enable-sdl2 --enable-fontconfig --enable-gnutls --enable-iconv --enable-libass --enable-libdav1d --enable-libbluray --enable-libfreetype --enable-libmp3lame --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libopus --enable-libshine --enable-libsnappy --enable-libsoxr --enable-libtheora --enable-libtwolame --enable-libvpx --enable-libwavpack --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libzimg --enable-lzma --enable-zlib --enable-gmp --enable-libvidstab --enable-libvorbis --enable-libvo-amrwbenc --enable-libmysofa --enable-libspeex --enable-libxvid --enable-libaom --enable-libmfx --enable-amf --enable-ffnvcodec --enable-cuvid --enable-d3d11va --enable-nvenc --enable-nvdec --enable-dxva2 --enable-avisynth --enable-libopenmpt
+  libavutil      56. 26.100 / 56. 26.100
+  libavcodec     58. 47.103 / 58. 47.103
+  libavformat    58. 26.101 / 58. 26.101
+  libavdevice    58.  6.101 / 58.  6.101
+  libavfilter     7. 48.100 /  7. 48.100
+  libswscale      5.  4.100 /  5.  4.100
+  libswresample   3.  4.100 /  3.  4.100
+  libpostproc    55.  4.100 / 55.  4.100
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'D:\documents\ظ…ط¹ظ…ط§ط±غŒ_طھط±ظ†ط³ظپظˆط±ظ…ط±_ظˆ_ظ…ط­ط¯ظˆط¯غŒطھ_ظ‡ط§غŒ_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ.m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2026-09-01T16:34:53.000000Z
+    encoder         : Google
+  Duration: 00:33:30.22, start: 0.000000, bitrate: 257 kb/s
+    Stream #0:0(und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 1 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:34:53.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'D:\documents\ظ…ط¹ظ…ط§ط±غŒ_طھط±ظ†ط³ظپظˆط±ظ…ط±_ظˆ_ظ…ط­ط¯ظˆط¯غŒطھ_ظ‡ط§غŒ_ظ‡ظˆط´_ظ…طµظ†ظˆط¹غŒ (128kbps).mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf58.26.101
+    Stream #0:0(und): Audio: mp3 (libmp3lame), 44100 Hz, stereo, fltp, 128 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-01T16:34:53.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+      encoder         : Lavc58.47.103 libmp3lame
+size=     512kB time=00:00:39.44 bitrate= 106.3kbits/s speed=78.8x    
+size=    1280kB time=00:01:24.92 bitrate= 123.5kbits/s speed=84.8x    
+size=    2048kB time=00:02:12.78 bitrate= 126.4kbits/s speed=88.4x    
+size=    2560kB time=00:03:00.08 bitrate= 116.5kbits/s speed=  90x    
+size=    3328kB time=00:03:43.47 bitrate= 122.0kbits/s speed=89.3x    
+size=    4096kB time=00:04:29.76 bitrate= 124.4kbits/s speed=89.8x    
+size=    4864kB time=00:05:18.01 bitrate= 125.3kbits/s speed=90.8x    
+size=    5632kB time=00:06:06.55 bitrate= 125.9kbits/s speed=91.6x    
+size=    6400kB time=00:06:57.35 bitrate= 125.6kbits/s speed=92.7x    
+size=    7168kB time=00:07:44.87 bitrate= 126.3kbits/s speed=92.9x    
+size=    7936kB time=00:08:30.64 bitrate= 127.3kbits/s speed=92.7x    
+size=    8448kB time=00:09:14.52 bitrate= 124.8kbits/s speed=92.3x    
+size=    9216kB time=00:09:50.36 bitrate= 127.9kbits/s speed=90.7x    
+size=    9728kB time=00:10:27.04 bitrate= 127.1kbits/s speed=89.5x    
+size=   10240kB time=00:11:03.58 bitrate= 126.4kbits/s speed=88.4x    
+size=   10752kB time=00:11:41.80 bitrate= 125.5kbits/s speed=87.6x    
+size=   11520kB time=00:12:20.80 bitrate= 127.4kbits/s speed=87.1x    
+size=   12032kB time=00:13:00.12 bitrate= 126.3kbits/s speed=86.6x    
+size=   12800kB time=00:13:40.50 bitrate= 127.8kbits/s speed=86.3x    
+size=   13312kB time=00:14:22.66 bitrate= 126.4kbits/s speed=86.2x    
+size=   14080kB time=00:15:04.41 bitrate= 127.5kbits/s speed=  86x    
+size=   14592kB time=00:15:46.36 bitrate= 126.3kbits/s speed=85.9x    
+size=   15360kB time=00:16:25.13 bitrate= 127.7kbits/s speed=85.6x    
+size=   15872kB time=00:17:07.99 bitrate= 126.5kbits/s speed=85.6x    
+size=   16640kB time=00:17:46.11 bitrate= 127.9kbits/s speed=85.2x    
+size=   17152kB time=00:18:25.50 bitrate= 127.1kbits/s speed=84.9x    
+size=   17920kB time=00:19:11.66 bitrate= 127.5kbits/s speed=85.2x    
+size=   18688kB time=00:20:00.79 bitrate= 127.5kbits/s speed=85.7x    
+size=   19456kB time=00:20:45.20 bitrate= 128.0kbits/s speed=85.8x    
+size=   19968kB time=00:21:26.47 bitrate= 127.2kbits/s speed=85.7x    
+size=   20736kB time=00:22:09.39 bitrate= 127.8kbits/s speed=85.7x    
+size=   21248kB time=00:22:53.31 bitrate= 126.7kbits/s speed=85.7x    
+size=   22016kB time=00:23:32.59 bitrate= 127.7kbits/s speed=85.5x    
+size=   22528kB time=00:24:14.08 bitrate= 126.9kbits/s speed=85.4x    
+size=   23296kB time=00:24:55.72 bitrate= 127.6kbits/s speed=85.4x    
+size=   23808kB time=00:25:36.94 bitrate= 126.9kbits/s speed=85.3x    
+size=   24576kB time=00:26:18.73 bitrate= 127.5kbits/s speed=85.2x    
+size=   25088kB time=00:27:01.13 bitrate= 126.8kbits/s speed=85.2x    
+size=   25856kB time=00:27:42.40 bitrate= 127.4kbits/s speed=85.2x    
+size=   26624kB time=00:28:27.67 bitrate= 127.7kbits/s speed=85.3x    
+size=   27392kB time=00:29:15.03 bitrate= 127.9kbits/s speed=85.5x    
+size=   28160kB time=00:30:05.21 bitrate= 127.8kbits/s speed=85.9x    
+size=   28672kB time=00:30:50.14 bitrate= 127.0kbits/s speed=  86x    
+size=   29440kB time=00:31:33.43 bitrate= 127.4kbits/s speed=  86x    
+size=   30208kB time=00:32:22.46 bitrate= 127.4kbits/s speed=86.2x    
+size=   30976kB time=00:33:11.36 bitrate= 127.4kbits/s speed=86.5x    
+size=   31411kB time=00:33:30.22 bitrate= 128.0kbits/s speed=86.6x    
+video:0kB audio:31410kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.001726%
+
+[2026-09-01 21:04:36] [m4a] Conversion finished successfully.
