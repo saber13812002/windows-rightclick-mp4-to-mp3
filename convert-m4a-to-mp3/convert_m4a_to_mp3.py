@@ -32,6 +32,21 @@ QUALITY_LEVELS = {
         "suffix": " (128kbps)",
         "args": ["-c:a", "libmp3lame", "-b:a", "128k"],
     },
+    "64": {
+        "label": "64 kbps",
+        "suffix": " (64kbps)",
+        "args": ["-c:a", "libmp3lame", "-b:a", "64k"],
+    },
+    "56": {
+        "label": "56 kbps",
+        "suffix": " (56kbps)",
+        "args": ["-c:a", "libmp3lame", "-b:a", "56k"],
+    },
+    "48": {
+        "label": "48 kbps",
+        "suffix": " (48kbps)",
+        "args": ["-c:a", "libmp3lame", "-b:a", "48k"],
+    },
 }
 
 

@@ -23,3 +23,21 @@ Windows Registry Editor Version 5.00
 
 [HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4ALow\command]
 @="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" low"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A64]
+@="Convert to MP3 - 64 kbps"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A64\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" 64"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A56]
+@="Convert to MP3 - 56 kbps"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A56\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" 56"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A48]
+@="Convert to MP3 - 48 kbps"
+
+[HKEY_CLASSES_ROOT\SystemFileAssociations\.m4a\shell\ConvertM4A48\command]
+@="\"C:\\Users\\s.tabatabaei\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe\" \"D:\\saberprojects-d\\windows-rightclick-mp4-to-mp3\\convert-m4a-to-mp3\\convert_m4a_to_mp3.py\" \"%1\" 48"
