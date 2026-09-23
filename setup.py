@@ -129,9 +129,12 @@ def main():
     ap.add_argument("--ffprobe", metavar="PATH", help="Path to ffprobe.exe (optional)")
     ap.add_argument("--version", "-V", action="store_true", help="Print version and exit")
     ap.add_argument("--check", "-c", action="store_true", help="Verify setup and print report (no files written)")
+    ap.add_argument("--no-open", action="store_true", help="Do not open the generated .reg file (import it manually)")
     args = ap.parse_args()
 
-    root = Path(__file__).resolve().parent
+    # When frozen (PyInstaller onefile), __file__ points into a temp _MEI dir;
+    # the real "root" is the folder containing the EXE.
+    root = Path(sys.executable).resolve().parent if _is_frozen() else Path(__file__).resolve().parent
 
     if args.version:
         print(f"convert_mp4_to_mp3 setup {VERSION}")
@@ -233,9 +236,23 @@ def main():
     else:
         print("Running as compiled EXE — entries will point directly to tool EXEs.")
 
-    batch_script = script_dir / "batch_convert" / "batch_convert.py"
+    batch_script = script_dir / "batch-convert" / "batch_convert.py"
     if is_frozen:
         batch_script = Path(exe_path("batch_convert"))
+
+    # Bitrate menu definition: (key suffix, menu label, quality arg passed to scripts)
+    # NOTE: these become FLAT top-level context-menu entries (one per bitrate).
+    # Nested submenus (shell\Parent\shell\Child) are not rendered reliably on
+    # Windows 10 Explorer, so each bitrate is its own top-level entry — the same
+    # proven structure that works on the other system.
+    QUALITY_MENU = [
+        ("High", "High (320 kbps)", "high"),
+        ("Medium", "Medium (192 kbps)", "medium"),
+        ("Low", "Low (128 kbps)", "low"),
+        ("64", "64 kbps", "64"),
+        ("56", "56 kbps", "56"),
+        ("48", "48 kbps", "48"),
+    ]
 
     # Define all registry entries
     entries = [
@@ -295,13 +312,51 @@ def main():
         lines.append(f'@="{cmd}"')
         lines.append("")
 
+    # ─── Bitrate entries as FLAT top-level menu items (reliable in classic and Windows 11 menus) ───
+    def subcmd_file(target, quality):
+        """Registry command for a single file with an extra quality arg.
+        Order: file first, quality second — matches convert_*_to_mp3.py
+        (argv[1]=file, argv[2]=quality) and the .reg that works on the
+        other system ('"file" high')."""
+        if is_frozen:
+            return f'\\"{esc(target)}\\" \\"%1\\" \\"{quality}\\"'
+        return f'\\"{esc(py_exe)}\\" \\"{esc(target)}\\" \\"%1\\" \\"{quality}\\"'
+
+    def subcmd_dir(target, quality):
+        if is_frozen:
+            return f'\\"{esc(target)}\\" \\"--action\\" \\"mp3\\" \\"--quality\\" \\"{quality}\\" \\"%1\\"'
+        return f'\\"{esc(py_exe)}\\" \\"{esc(target)}\\" \\"--action\\" \\"mp3\\" \\"--quality\\" \\"{quality}\\" \\"%1\\"'
+
+    mp4_target = exe_path("convert_mp4_to_mp3") or str(script_dir / "convert-mp4-to-mp3" / "convert_mp4_to_mp3.py")
+    m4a_target = exe_path("convert_m4a_to_mp3") or str(script_dir / "convert-m4a-to-mp3" / "convert_m4a_to_mp3.py")
+
+    for ext, prefix, target in ((".mp4", "ConvertMP4", mp4_target), (".m4a", "ConvertM4A", m4a_target)):
+        base = f"HKEY_CLASSES_ROOT\\SystemFileAssociations\\{ext}\\shell"
+        for key_sfx, label, quality in QUALITY_MENU:
+            reg_key = f"{prefix}{key_sfx}"
+            lines.append(f"[{base}\\{reg_key}]")
+            lines.append(f'@="Convert to MP3 - {label}"')
+            lines.append("")
+            lines.append(f"[{base}\\{reg_key}\\command]")
+            lines.append(f'@="{subcmd_file(target, quality)}"')
+            lines.append("")
+
+    for key_sfx, label, quality in QUALITY_MENU:
+        reg_key = f"ConvertFolderMP3{key_sfx}"
+        lines.append(f"[HKEY_CLASSES_ROOT\\Directory\\shell\\{reg_key}]")
+        lines.append(f'@="Convert all in folder to MP3 - {label}"')
+        lines.append("")
+        lines.append(f"[HKEY_CLASSES_ROOT\\Directory\\shell\\{reg_key}\\command]")
+        lines.append(f'@="{subcmd_dir(str(batch_script), quality)}"')
+        lines.append("")
+
     reg_path = root / "register_all.reg"
     with open(reg_path, "w", encoding="utf-8") as f:
         f.write("\r\n".join(lines))
     print("register_all.reg created.")
 
     import os
-    if os.name == "nt":
+    if os.name == "nt" and not args.no_open:
         os.startfile(str(reg_path))
         print("A dialog opened: click Yes/OK to add the context menu.")
 

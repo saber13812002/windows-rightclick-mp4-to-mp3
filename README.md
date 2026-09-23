@@ -10,7 +10,25 @@
 
 **روی هر ویندوزی** — حتی بدون Python و FFmpeg — کار می‌کند.
 
-### روش ۱: استفاده از EXEهای کامپایل شده (پیشنهادی)
+### روش ۰: نصب یک‌کلیک با [`quick_install.py`](quick_install.py) (ساده‌ترین)
+
+**روی هر ویندوزی** کار می‌کند — حتی اگر هیچ Python یا FFmpeg‌ای نصب نباشد:
+
+**۱.** کل پوشه پروژه را روی ویندوز مقصد کپی کنید (مثلاً روی فلش یا Zip)
+
+**۲.** روی [`quick_install.py`](quick_install.py) راست‌کلیک → **Run with Python** (اگر Python ندارد، خودش embedded Python دانلود می‌کند — فقط اینترنت لازم است)
+
+**۳.** در پنجره UAC روی **Yes** بزنید.
+
+این اسکریپت به‌صورت خودکار:
+- Python را پیدا می‌کند (نظامی، باندل‌شده، یا دانلود embedded Python)
+- FFmpeg پرتابل را پیدا می‌کند (یا دانلودش می‌کند → [`ffmpeg/`](ffmpeg/))
+- به‌طور خودکار administrator می‌شود (UAC)
+- `config.json` + `register_all.reg` را می‌سازد و رجیستری را import می‌کند
+
+> ✅ پس از آن راست‌کلیک روی هر فایل mp4/m4a/mp3 → همه گزینه‌ها در منو.
+
+### روش ۱: استفاده از EXEهای کامپایل شده
 
 اگر فایل‌های آماده در پوشه [`dist/`](dist/) دارید:
 
@@ -65,6 +83,7 @@ python setup.py
 ```
 windows-rightclick-mp4-to-mp3/
 │
+├── quick_install.py                  # نصاب یک‌کلیک هوشمند (Python/FFmpeg خودکار + UAC)
 ├── install.bat                       # نصاب یک‌کلیک (Admin)
 ├── uninstall.bat                     # حذف‌کننده
 ├── build-exes.ps1                    # [NEW] کامپایل EXE + دانلود FFmpeg
@@ -134,7 +153,13 @@ windows-rightclick-mp4-to-mp3/
 
 | فیچر | پسوند | توضیح |
 |------|-------|-------|
-| **Convert to MP3** | `.mp4`, `.m4a` | تبدیل به MP3 |
+| **Convert to MP3** | `.mp4`, `.m4a` | تبدیل به MP3 (320 kbps) |
+| **Convert to MP3 - High (320 kbps)** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 320 |
+| **Convert to MP3 - Medium (192 kbps)** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 192 (خروجی: `file (192kbps).mp3`) |
+| **Convert to MP3 - Low (128 kbps)** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 128 (خروجی: `file (128kbps).mp3`) |
+| **Convert to MP3 - 64 kbps** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 64 (خروجی: `file (64kbps).mp3`) |
+| **Convert to MP3 - 56 kbps** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 56 (خروجی: `file (56kbps).mp3`) |
+| **Convert to MP3 - 48 kbps** | `.mp4`, `.m4a` | تبدیل با بیت‌ریت 48 (خروجی: `file (48kbps).mp3`) |
 | **Convert to OGG 48kHz** | `.mp4`, `.m4a`, `.mkv`, `.avi`, `.webm`, `.mov` | تبدیل به OGG (مناسب پیام‌رسان) |
 | **Split midpoint (1s overlap)** | `.mp4`, `.mp3` | تقسیم از وسط با ۱ ثانیه هم‌پوشانی |
 | **Add Custom Music** | `.mp3` | اضافه کردن start/middle/finish به MP3 |
@@ -146,7 +171,8 @@ windows-rightclick-mp4-to-mp3/
 
 | فیچر | توضیح |
 |------|-------|
-| **Convert all in folder to MP3** | تبدیل همه فایل‌های پوشه به MP3 |
+| **Convert all in folder to MP3** | تبدیل همه فایل‌های پوشه به MP3 (320 kbps) |
+| **Convert all in folder to MP3 - High/Medium/Low/64/56/48 kbps** | تبدیل همه فایل‌های پوشه با بیت‌ریت انتخابی (۶ گزینه جداگانه) |
 | **Convert all in folder to OGG 48kHz** | تبدیل همه به OGG |
 | **Split midpoint for all in folder** | تقسیم همه از وسط |
 | **Remove silence for all in folder** | حذف سکوت همه |

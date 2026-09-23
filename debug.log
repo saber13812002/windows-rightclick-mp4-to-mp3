@@ -674,3 +674,418 @@ size=   31411kB time=00:33:30.22 bitrate= 128.0kbits/s speed=86.6x
 video:0kB audio:31410kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 0.001726%
 
 [2026-09-01 21:04:36] [m4a] Conversion finished successfully.
+[2026-09-23 21:49:24] [m4a] Script called with argument: C:\Users\s.tabatabaei\Downloads\راز_سود_بیست_برابری_استارتاپ_تک_سایز.m4a (quality: high)
+[2026-09-23 21:49:24] [m4a] Starting conversion. Quality='high' (High (320 kbps)) Input='C:\Users\s.tabatabaei\Downloads\راز_سود_بیست_برابری_استارتاپ_تک_سایز.m4a' Output='C:\Users\s.tabatabaei\Downloads\راز_سود_بیست_برابری_استارتاپ_تک_سایز.mp3'
+[2026-09-23 21:49:24] [m4a] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\Downloads\راز_سود_بیست_برابری_استارتاپ_تک_سایز.m4a -c:a libmp3lame -b:a 320k C:\Users\s.tabatabaei\Downloads\راز_سود_بیست_برابری_استارتاپ_تک_سایز.mp3
+[2026-09-23 21:49:42] [m4a] ffmpeg return code: 0
+[2026-09-23 21:49:42] [m4a] ffmpeg stderr:
+[2026-09-23 21:49:42] [m4a] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\Downloads\Ø±Ø§Ø²_Ø³ÙˆØ¯_Ø¨ÛŒØ³Øª_Ø¨Ø±Ø§Ø¨Ø±ÛŒ_Ø§Ø³ØªØ§Ø±ØªØ§Ù¾_ØªÚ©_Ø³Ø§ÛŒØ².m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2026-09-23T18:03:54.000000Z
+    encoder         : Google
+  Duration: 00:22:59.27, start: 0.000000, bitrate: 257 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 256 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-23T18:03:54.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\Downloads\Ø±Ø§Ø²_Ø³ÙˆØ¯_Ø¨ÛŒØ³Øª_Ø¨Ø±Ø§Ø¨Ø±ÛŒ_Ø§Ø³ØªØ§Ø±ØªØ§Ù¾_ØªÚ©_Ø³Ø§ÛŒØ².mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 320 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      creation_time   : 2026-09-23T18:03:54.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+size=    1280KiB time=00:00:36.28 bitrate= 289.0kbits/s speed=70.7x elapsed=0:00:00.51    
+size=    2816KiB time=00:01:14.52 bitrate= 309.5kbits/s speed=72.7x elapsed=0:00:01.02    
+size=    4352KiB time=00:01:55.20 bitrate= 309.5kbits/s speed=74.8x elapsed=0:00:01.54    
+size=    5888KiB time=00:02:35.95 bitrate= 309.3kbits/s speed=75.7x elapsed=0:00:02.05    
+size=    7680KiB time=00:03:18.45 bitrate= 317.0kbits/s speed=77.2x elapsed=0:00:02.57    
+size=    9472KiB time=00:04:03.77 bitrate= 318.3kbits/s speed=78.7x elapsed=0:00:03.09    
+size=   11008KiB time=00:04:46.17 bitrate= 315.1kbits/s speed=79.2x elapsed=0:00:03.61    
+size=   12800KiB time=00:05:30.00 bitrate= 317.7kbits/s speed=  80x elapsed=0:00:04.12    
+size=   14592KiB time=00:06:15.09 bitrate= 318.7kbits/s speed=80.8x elapsed=0:00:04.64    
+size=   16128KiB time=00:06:57.90 bitrate= 316.1kbits/s speed=  81x elapsed=0:00:05.15    
+size=   17920KiB time=00:07:42.47 bitrate= 317.4kbits/s speed=81.6x elapsed=0:00:05.67    
+size=   19200KiB time=00:08:16.01 bitrate= 317.1kbits/s speed=80.2x elapsed=0:00:06.18    
+size=   20992KiB time=00:08:58.43 bitrate= 319.4kbits/s speed=80.4x elapsed=0:00:06.69    
+size=   22528KiB time=00:09:40.07 bitrate= 318.1kbits/s speed=80.4x elapsed=0:00:07.21    
+size=   23808KiB time=00:10:14.63 bitrate= 317.3kbits/s speed=79.5x elapsed=0:00:07.72    
+size=   25600KiB time=00:10:57.55 bitrate= 318.9kbits/s speed=79.6x elapsed=0:00:08.25    
+size=   27392KiB time=00:11:41.65 bitrate= 319.8kbits/s speed=  80x elapsed=0:00:08.77    
+size=   28928KiB time=00:12:21.25 bitrate= 319.7kbits/s speed=79.8x elapsed=0:00:09.29    
+size=   30464KiB time=00:13:04.82 bitrate= 318.0kbits/s speed=  80x elapsed=0:00:09.81    
+size=   32256KiB time=00:13:49.23 bitrate= 318.7kbits/s speed=80.3x elapsed=0:00:10.32    
+size=   34048KiB time=00:14:34.45 bitrate= 319.0kbits/s speed=80.6x elapsed=0:00:10.84    
+size=   35584KiB time=00:15:16.63 bitrate= 318.0kbits/s speed=80.7x elapsed=0:00:11.36    
+size=   37376KiB time=00:15:59.71 bitrate= 319.0kbits/s speed=80.8x elapsed=0:00:11.87    
+size=   38912KiB time=00:16:37.48 bitrate= 319.6kbits/s speed=80.5x elapsed=0:00:12.39    
+size=   40448KiB time=00:17:17.16 bitrate= 319.5kbits/s speed=80.3x elapsed=0:00:12.91    
+size=   42240KiB time=00:18:01.57 bitrate= 319.9kbits/s speed=80.5x elapsed=0:00:13.42    
+size=   43776KiB time=00:18:42.61 bitrate= 319.4kbits/s speed=80.5x elapsed=0:00:13.94    
+size=   45312KiB time=00:19:23.78 bitrate= 319.0kbits/s speed=80.5x elapsed=0:00:14.45    
+size=   47104KiB time=00:20:07.09 bitrate= 319.7kbits/s speed=80.6x elapsed=0:00:14.97    
+size=   48640KiB time=00:20:50.87 bitrate= 318.5kbits/s speed=80.8x elapsed=0:00:15.48    
+size=   50432KiB time=00:21:34.68 bitrate= 319.1kbits/s speed=80.9x elapsed=0:00:16.00    
+size=   51968KiB time=00:22:16.79 bitrate= 318.5kbits/s speed=80.9x elapsed=0:00:16.51    
+size=   53504KiB time=00:22:55.37 bitrate= 318.7kbits/s speed=80.8x elapsed=0:00:17.03    
+[out#0/mp3 @ 000001ece07511c0] video:0KiB audio:53879KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.002142%
+size=   53880KiB time=00:22:59.26 bitrate= 320.0kbits/s speed=80.8x elapsed=0:00:17.07    
+
+[2026-09-23 21:49:42] [m4a] Conversion finished successfully.
+[2026-09-23 21:50:24] Script called with argument: C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4
+[2026-09-23 21:50:24] Starting conversion. Input='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4' Output='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp3'
+[2026-09-23 21:50:24] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4 C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp3
+[2026-09-23 21:50:24] ffmpeg return code: 4294967294
+[2026-09-23 21:50:24] ffmpeg stderr:
+[2026-09-23 21:50:24] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+[in#0 @ 000001f323e4cd00] Error opening input: No such file or directory
+Error opening input file C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4.
+Error opening input files: No such file or directory
+
+[2026-09-23 21:50:24] ffmpeg failed with code 4294967294. See debug.log for details.
+[2026-09-23 21:50:35] Script called with argument: C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4
+[2026-09-23 21:50:35] Starting conversion. Input='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4' Output='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp3'
+[2026-09-23 21:50:35] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4 C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp3
+[2026-09-23 21:50:35] ffmpeg return code: 0
+[2026-09-23 21:50:35] ffmpeg stderr:
+[2026-09-23 21:50:35] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:00:03.00, start: 0.000000, bitrate: 112 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 320x240 [SAR 1:1 DAR 4:3], 34 kb/s, 10 fps, 10 tbr, 10240 tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc62.28.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 69 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+Stream mapping:
+  Stream #0:1 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_smoke_test.mp3':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, mono, fltp (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      handler_name    : SoundHandler
+[out#0/mp3 @ 00000234a1697240] video:0KiB audio:24KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.349693%
+size=      24KiB time=00:00:03.01 bitrate=  65.7kbits/s speed=76.3x elapsed=0:00:00.03    
+
+[2026-09-23 21:50:35] Conversion finished successfully.
+[2026-09-23 22:14:16] Script called with argument: C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 (quality: 48)
+[2026-09-23 22:14:16] Starting conversion. Quality='48' (48 kbps) Input='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4' Output='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (48kbps).mp3'
+[2026-09-23 22:14:16] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 -c:a libmp3lame -b:a 48k C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (48kbps).mp3
+[2026-09-23 22:14:16] ffmpeg return code: 0
+[2026-09-23 22:14:16] ffmpeg stderr:
+[2026-09-23 22:14:16] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:00:04.00, start: 0.000000, bitrate: 72 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 69 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (48kbps).mp3':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, mono, fltp, 48 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      handler_name    : SoundHandler
+[out#0/mp3 @ 000001b0ccf44f00] video:0KiB audio:24KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.341895%
+size=      24KiB time=00:00:04.01 bitrate=  49.0kbits/s speed= 105x elapsed=0:00:00.03    
+
+[2026-09-23 22:14:16] Conversion finished successfully.
+[2026-09-23 22:14:16] Script called with argument: C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 (quality: 56)
+[2026-09-23 22:14:16] Starting conversion. Quality='56' (56 kbps) Input='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4' Output='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (56kbps).mp3'
+[2026-09-23 22:14:16] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 -c:a libmp3lame -b:a 56k C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (56kbps).mp3
+[2026-09-23 22:14:16] ffmpeg return code: 0
+[2026-09-23 22:14:16] ffmpeg stderr:
+[2026-09-23 22:14:16] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:00:04.00, start: 0.000000, bitrate: 72 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 69 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (56kbps).mp3':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, mono, fltp, 56 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      handler_name    : SoundHandler
+[out#0/mp3 @ 0000027afa4f6280] video:0KiB audio:28KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.150236%
+size=      28KiB time=00:00:04.01 bitrate=  57.1kbits/s speed=  92x elapsed=0:00:00.04    
+
+[2026-09-23 22:14:16] Conversion finished successfully.
+[2026-09-23 22:14:16] Script called with argument: C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 (quality: 64)
+[2026-09-23 22:14:16] Starting conversion. Quality='64' (64 kbps) Input='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4' Output='C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (64kbps).mp3'
+[2026-09-23 22:14:16] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4 -c:a libmp3lame -b:a 64k C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (64kbps).mp3
+[2026-09-23 22:14:16] ffmpeg return code: 0
+[2026-09-23 22:14:16] ffmpeg stderr:
+[2026-09-23 22:14:16] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    encoder         : Lavf62.12.102
+  Duration: 00:00:04.00, start: 0.000000, bitrate: 72 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 69 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\AppData\Local\Temp\rc_q_test (64kbps).mp3':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, mono, fltp, 64 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      handler_name    : SoundHandler
+[out#0/mp3 @ 000001d85b496100] video:0KiB audio:32KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.086722%
+size=      32KiB time=00:00:04.01 bitrate=  65.2kbits/s speed=95.8x elapsed=0:00:00.04    
+
+[2026-09-23 22:14:16] Conversion finished successfully.
+[2026-09-23 22:41:26] [m4a] Unknown quality 'test48.m4a', falling back to 'high'.
+[2026-09-23 22:41:26] [m4a] Script called with argument: 48 (quality: high)
+[2026-09-23 22:41:26] [m4a] Starting conversion. Quality='high' (High (320 kbps)) Input='48' Output='48.mp3'
+[2026-09-23 22:41:26] [m4a] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i 48 -c:a libmp3lame -b:a 320k 48.mp3
+[2026-09-23 22:41:26] [m4a] ffmpeg return code: 4294967294
+[2026-09-23 22:41:26] [m4a] ffmpeg stderr:
+[2026-09-23 22:41:26] [m4a] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+[in#0 @ 00000285a51dc140] Error opening input: No such file or directory
+Error opening input file 48.
+Error opening input files: No such file or directory
+
+[2026-09-23 22:41:26] [m4a] ffmpeg failed with code 4294967294. See debug.log for details.
+[2026-09-23 22:42:54] [m4a] Script called with argument: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a (quality: 48)
+[2026-09-23 22:42:54] [m4a] Starting conversion. Quality='48' (48 kbps) Input='C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a' Output='C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a (48kbps).mp3'
+[2026-09-23 22:42:54] [m4a] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a -c:a libmp3lame -b:a 48k C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a (48kbps).mp3
+[2026-09-23 22:42:54] [m4a] ffmpeg return code: 4294967294
+[2026-09-23 22:42:54] [m4a] ffmpeg stderr:
+[2026-09-23 22:42:54] [m4a] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+[in#0 @ 000001d673cad900] Error opening input: No such file or directory
+Error opening input file C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a.
+Error opening input files: No such file or directory
+
+[2026-09-23 22:42:54] [m4a] ffmpeg failed with code 4294967294. See debug.log for details.
+[2026-09-23 22:43:39] [m4a] Script called with argument: c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a (quality: 48)
+[2026-09-23 22:43:39] [m4a] Starting conversion. Quality='48' (48 kbps) Input='c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a' Output='c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a (48kbps).mp3'
+[2026-09-23 22:43:39] [m4a] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a -c:a libmp3lame -b:a 48k c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a (48kbps).mp3
+[2026-09-23 22:43:39] [m4a] ffmpeg return code: 0
+[2026-09-23 22:43:39] [m4a] ffmpeg stderr:
+[2026-09-23 22:43:39] [m4a] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a.m4a':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 512
+    compatible_brands: M4A isomiso2
+    encoder         : Lavf62.12.102
+  Duration: 00:00:03.00, start: 0.000000, bitrate: 73 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, mono, fltp, 69 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'c:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\test_m4a (48kbps).mp3':
+  Metadata:
+    major_brand     : M4A 
+    minor_version   : 512
+    compatible_brands: M4A isomiso2
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, mono, fltp, 48 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      handler_name    : SoundHandler
+[out#0/mp3 @ 000001bb5fe87740] video:0KiB audio:18KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 1.777729%
+size=      18KiB time=00:00:03.01 bitrate=  49.5kbits/s speed=79.1x elapsed=0:00:00.03    
+
+[2026-09-23 22:43:39] [m4a] Conversion finished successfully.
+[2026-09-23 22:59:15] [m4a] Script called with argument: C:\Users\s.tabatabaei\Downloads\جراحی_تناقض_های_مالی_و_بحران_نقدینگی_تک_سایز.m4a (quality: 64)
+[2026-09-23 22:59:15] [m4a] Starting conversion. Quality='64' (64 kbps) Input='C:\Users\s.tabatabaei\Downloads\جراحی_تناقض_های_مالی_و_بحران_نقدینگی_تک_سایز.m4a' Output='C:\Users\s.tabatabaei\Downloads\جراحی_تناقض_های_مالی_و_بحران_نقدینگی_تک_سایز (64kbps).mp3'
+[2026-09-23 22:59:15] [m4a] Running command: C:\Users\s.tabatabaei\Documents\saberprojects\windows-rightclick-mp4-to-mp3\ffmpeg\ffmpeg.exe -y -i C:\Users\s.tabatabaei\Downloads\جراحی_تناقض_های_مالی_و_بحران_نقدینگی_تک_سایز.m4a -c:a libmp3lame -b:a 64k C:\Users\s.tabatabaei\Downloads\جراحی_تناقض_های_مالی_و_بحران_نقدینگی_تک_سایز (64kbps).mp3
+[2026-09-23 22:59:25] [m4a] ffmpeg return code: 0
+[2026-09-23 22:59:25] [m4a] ffmpeg stderr:
+[2026-09-23 22:59:25] [m4a] ffmpeg version 8.1.2-essentials_build-www.gyan.dev Copyright (c) 2000-2026 the FFmpeg developers
+  built with gcc 16.1.0 (Rev2, Built by MSYS2 project)
+  configuration: --enable-gpl --enable-version3 --enable-static --disable-w32threads --disable-autodetect --enable-cairo --enable-fontconfig --enable-iconv --enable-gnutls --enable-libxml2 --enable-gmp --enable-bzlib --enable-lzma --enable-zlib --enable-libsrt --enable-libssh --enable-libzmq --enable-avisynth --enable-sdl2 --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxvid --enable-libaom --enable-libopenjpeg --enable-libvpx --enable-mediafoundation --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libvmaf --enable-libzimg --enable-amf --enable-cuda-llvm --enable-cuvid --enable-dxva2 --enable-d3d11va --enable-d3d12va --enable-ffnvcodec --enable-libvpl --enable-nvdec --enable-nvenc --enable-vaapi --enable-openal --enable-libgme --enable-libopenmpt --enable-libopencore-amrwb --enable-libmp3lame --enable-libtheora --enable-libvo-amrwbenc --enable-libgsm --enable-libopencore-amrnb --enable-libopus --enable-libspeex --enable-libvorbis --enable-librubberband
+  libavutil      60. 26.102 / 60. 26.102
+  libavcodec     62. 28.102 / 62. 28.102
+  libavformat    62. 12.102 / 62. 12.102
+  libavdevice    62.  3.102 / 62.  3.102
+  libavfilter    11. 14.102 / 11. 14.102
+  libswscale      9.  5.102 /  9.  5.102
+  libswresample   6.  3.102 /  6.  3.102
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\s.tabatabaei\Downloads\Ø¬Ø±Ø§Ø­ÛŒ_ØªÙ†Ø§Ù‚Ø¶_Ù‡Ø§ÛŒ_Ù…Ø§Ù„ÛŒ_Ùˆ_Ø¨Ø­Ø±Ø§Ù†_Ù†Ù‚Ø¯ÛŒÙ†Ú¯ÛŒ_ØªÚ©_Ø³Ø§ÛŒØ².m4a':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    creation_time   : 2026-09-23T18:03:01.000000Z
+    encoder         : Google
+  Duration: 00:11:54.85, start: 0.000000, bitrate: 257 kb/s
+  Stream #0:0[0x1](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 256 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-23T18:03:01.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+Stream mapping:
+  Stream #0:0 -> #0:0 (aac (native) -> mp3 (libmp3lame))
+Press [q] to stop, [?] for help
+Output #0, mp3, to 'C:\Users\s.tabatabaei\Downloads\Ø¬Ø±Ø§Ø­ÛŒ_ØªÙ†Ø§Ù‚Ø¶_Ù‡Ø§ÛŒ_Ù…Ø§Ù„ÛŒ_Ùˆ_Ø¨Ø­Ø±Ø§Ù†_Ù†Ù‚Ø¯ÛŒÙ†Ú¯ÛŒ_ØªÚ©_Ø³Ø§ÛŒØ² (64kbps).mp3':
+  Metadata:
+    major_brand     : dash
+    minor_version   : 0
+    compatible_brands: iso6mp41
+    TSSE            : Lavf62.12.102
+  Stream #0:0(und): Audio: mp3, 44100 Hz, stereo, fltp, 64 kb/s (default)
+    Metadata:
+      encoder         : Lavc62.28.102 libmp3lame
+      creation_time   : 2026-09-23T18:03:01.000000Z
+      handler_name    : ISO Media file produced by Google Inc.
+size=     256KiB time=00:00:36.20 bitrate=  57.9kbits/s speed=71.6x elapsed=0:00:00.50    
+size=     512KiB time=00:01:17.45 bitrate=  54.2kbits/s speed=75.9x elapsed=0:00:01.02    
+size=     768KiB time=00:01:59.72 bitrate=  52.6kbits/s speed=77.3x elapsed=0:00:01.54    
+size=    1024KiB time=00:02:41.96 bitrate=  51.8kbits/s speed=78.5x elapsed=0:00:02.06    
+size=    1536KiB time=00:03:23.96 bitrate=  61.7kbits/s speed=79.1x elapsed=0:00:02.57    
+size=    1792KiB time=00:04:05.78 bitrate=  59.7kbits/s speed=79.5x elapsed=0:00:03.09    
+size=    2048KiB time=00:04:47.84 bitrate=  58.3kbits/s speed=79.8x elapsed=0:00:03.60    
+size=    2560KiB time=00:05:30.52 bitrate=  63.4kbits/s speed=80.1x elapsed=0:00:04.12    
+size=    2816KiB time=00:06:12.71 bitrate=  61.9kbits/s speed=80.4x elapsed=0:00:04.63    
+size=    3072KiB time=00:06:54.95 bitrate=  60.6kbits/s speed=80.5x elapsed=0:00:05.15    
+size=    3328KiB time=00:07:36.85 bitrate=  59.7kbits/s speed=80.6x elapsed=0:00:05.66    
+size=    3840KiB time=00:08:16.87 bitrate=  63.3kbits/s speed=80.4x elapsed=0:00:06.17    
+size=    4096KiB time=00:08:59.53 bitrate=  62.2kbits/s speed=80.6x elapsed=0:00:06.69    
+size=    4352KiB time=00:09:41.04 bitrate=  61.4kbits/s speed=80.6x elapsed=0:00:07.21    
+size=    4608KiB time=00:10:20.27 bitrate=  60.9kbits/s speed=80.3x elapsed=0:00:07.72    
+size=    5120KiB time=00:11:00.76 bitrate=  63.5kbits/s speed=80.2x elapsed=0:00:08.24    
+size=    5376KiB time=00:11:43.29 bitrate=  62.6kbits/s speed=80.3x elapsed=0:00:08.75    
+[out#0/mp3 @ 0000020507ef6e00] video:0KiB audio:5585KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.006050%
+size=    5585KiB time=00:11:54.84 bitrate=  64.0kbits/s speed=80.2x elapsed=0:00:08.91    
+
+[2026-09-23 22:59:25] [m4a] Conversion finished successfully.

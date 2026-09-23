@@ -52,8 +52,23 @@ MP3_SCRIPT_BY_EXT = {
     ".m4a": _root / "convert-m4a-to-mp3" / "convert_m4a_to_mp3.py",
 }
 
+# Output filename suffix per MP3 quality level (must match the converters).
+MP3_QUALITY_SUFFIX = {
+    "high": "",
+    "medium": " (192kbps)",
+    "low": " (128kbps)",
+    "64": " (64kbps)",
+    "56": " (56kbps)",
+    "48": " (48kbps)",
+}
 
-def run_batch(folder_path: Path, action: str) -> None:
+
+def mp3_output_exists(f: Path, quality: str) -> bool:
+    suffix = MP3_QUALITY_SUFFIX.get(quality, "")
+    return (f.parent / (f.stem + suffix + ".mp3")).exists()
+
+
+def run_batch(folder_path: Path, action: str, quality: str = "high") -> None:
     if action not in ACTIONS:
         print(f"Unknown action: {action}")
         sys.exit(1)
@@ -64,7 +79,10 @@ def run_batch(folder_path: Path, action: str) -> None:
         sys.exit(1)
 
     files = [f for f in folder_path.iterdir() if f.is_file() and f.suffix.lower() in exts]
-    to_process = [f for f in files if not output_exists(f)]
+    if action == "mp3":
+        to_process = [f for f in files if not mp3_output_exists(f, quality)]
+    else:
+        to_process = [f for f in files if not output_exists(f)]
     skipped = len(files) - len(to_process)
     if skipped:
         print(f"Skipped {skipped} (output already exists).")
@@ -75,8 +93,11 @@ def run_batch(folder_path: Path, action: str) -> None:
             script = MP3_SCRIPT_BY_EXT.get(f.suffix.lower())
             if not script:
                 continue
+            quality_arg = [quality]
+        else:
+            quality_arg = []
         try:
-            subprocess.run([sys.executable, str(script), str(f)], check=True)
+            subprocess.run([sys.executable, str(script), str(f), *quality_arg], check=True)
             print(f"[{i}/{len(to_process)}] Done: {f.name}")
         except subprocess.CalledProcessError as e:
             print(f"[{i}/{len(to_process)}] Failed: {f.name} - {e}")
@@ -90,8 +111,10 @@ def main():
     ap = argparse.ArgumentParser(description="Batch convert files in folder (no interaction; skips existing output).")
     ap.add_argument("folder", type=Path, help="Folder path")
     ap.add_argument("--action", required=True, choices=list(ACTIONS), help="Action to run")
+    ap.add_argument("--quality", default="high", choices=list(MP3_QUALITY_SUFFIX),
+                    help="MP3 bitrate level (only used with --action mp3)")
     args = ap.parse_args()
-    run_batch(args.folder, args.action)
+    run_batch(args.folder, args.action, args.quality)
 
 
 if __name__ == "__main__":
